@@ -7,8 +7,8 @@
         <div class="auth-logo-badge">
             <i class="fa-solid fa-notes-medical"></i>
         </div>
-        <h1 class="auth-title">Klinik App</h1>
-        <p class="auth-subtitle">Masuk Petugas · Laporan dan Pengelolaan Klinik</p>
+        <h1 class="auth-title">{{ config('app.name') }}</h1>
+        <p class="auth-subtitle">Portal Petugas · Pemeriksaan Gigi</p>
     </div>
 
     <!-- Session Status Notification -->

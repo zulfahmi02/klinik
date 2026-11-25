@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Klinik Gigi - Sistem Informasi Pelayanan</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-container": "#fdfcff", "on-background": "#191c1e", "on-secondary-fixed-variant": "#224e47", "on-primary-container": "#f4fffc", "on-surface-variant": "#3d4947", "outline": "#6d7a77", "surface-variant": "#e0e3e5", "outline-variant": "#bcc9c6", "surface-container-high": "#e6e8ea", "surface-bright": "#f7f9fb", "inverse-surface": "#2d3133", "surface-container": "#eceef0", "on-tertiary-fixed-variant": "#004b73", "tertiary-container": "#007bb9", "secondary-container": "#bdece2", "surface-container-low": "#f2f4f6", "surface-container-highest": "#e0e3e5", "on-primary": "#ffffff", "on-tertiary": "#ffffff", "on-primary-fixed-variant": "#005049", "surface-tint": "#006a61", "on-surface": "#191c1e", "on-tertiary-fixed": "#001d31", "on-secondary": "#ffffff", "secondary-fixed": "#bdece2", "error-container": "#ffdad6", "inverse-primary": "#6bd8cb", "secondary-fixed-dim": "#a2d0c6", "error": "#ba1a1a", "background": "#f7f9fb", "on-secondary-fixed": "#00201c", "primary": "#00685f", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "tertiary-fixed": "#cce5ff", "primary-fixed-dim": "#6bd8cb", "primary-container": "#008378", "tertiary": "#006194", "surface-dim": "#d8dadc", "on-secondary-container": "#416c65", "inverse-on-surface": "eff1f3", "on-primary-fixed": "#00201d", "on-error": "#ffffff", "primary-fixed": "#89f5e7", "tertiary-fixed-dim": "#93ccff", "secondary": "#3b665f", "surface": "#f7f9fb" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-mobile": "1rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "margin": "2rem", "gutter": "1.5rem", "space-xl": "2rem", "space-md": "1rem", "gutter-mobile": "0.75rem", "space-sm": "0.5rem" }, "fontFamily": { "body-md": ["Inter"], "display-lg-mobile": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "display-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-xs": ["Plus Jakarta Sans"] }, "fontSize": { "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }], "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-xs": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-secondary-container/40"><div class="w-full max-w-[1440px] mx-auto px-margin flex items-center justify-between py-1.5"><div class="flex items-center gap-space-sm"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-xs text-label-xs text-on-secondary-container uppercase tracking-wide">Poli Gigi Buka Hari Ini (08.00 - 20.00 WIB)</span></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[15px] text-secondary">call</span><span class="font-label-xs text-label-xs text-on-surface-variant">(021) 555-8921</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[15px] text-primary">emergency</span><span class="font-label-xs text-label-xs text-primary font-semibold">Darurat: 0812-9988-7711</span></div></div></div></div><div class="h-20 w-full max-w-[1440px] mx-auto px-margin flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[22px]">dentistry</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-tight">Klinik Gigi</span><span class="font-label-xs text-label-xs text-on-surface-variant font-medium">Sistem Informasi Pelayanan</span></div></div><nav class="hidden md:flex items-center gap-space-sm" data-active-classes="bg-secondary-container text-on-secondary-container font-semibold rounded-lg"><a aria-current="page" class="px-space-md py-space-sm transition-colors bg-secondary-container text-on-secondary-container font-semibold rounded-lg" data-path="beranda" href="#">Beranda</a><a class="px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="layanan-dan-tarif" href="#">Layanan &amp; Tarif</a><a class="px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="jadwal-dokter" href="#">Jadwal Dokter</a><a class="px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="pendaftaran-antrean" href="#">Pendaftaran Antrean</a><a class="px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="cek-status-antrean" href="#">Cek Status Antrean</a><a class="px-space-md py-space-sm font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="panduan-dan-fasilitas" href="#">Panduan &amp; Fasilitas</a></nav><div class="flex items-center gap-space-md"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- BANNER NOTIFIKASI & STATUS PELAYANAN HARI INI -->
+<section class="w-full bg-surface-container-low py-space-md">
+<div class="w-full max-w-[1440px] mx-auto px-margin">
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center shrink-0 text-on-secondary-container">
+<span class="material-symbols-outlined text-[26px]">calendar_clock</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface">Pendaftaran Terbuka: Kunjungan Hari Ini</span>
+<span class="bg-secondary-container text-on-secondary-container font-label-xs text-label-xs px-space-sm py-0.5 rounded-full uppercase tracking-wider">03 November 2026</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+              Khusus Poli Gigi Rawat Jalan. Pendaftaran langsung tanpa pembuatan akun atau kata sandi.
+            </p>
+</div>
+</div>
+<div class="bg-surface-container-high rounded-lg p-space-sm px-space-md flex items-center gap-space-sm shrink-0">
+<span class="material-symbols-outlined text-primary text-[22px]">badge</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Pernah berobat sebelumnya?</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pasien lama disarankan konfirmasi ke resepsionis untuk verifikasi nomor Rekam Medis (RM).</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PANDUAN ALUR 3 LANGKAH REGISTER -->
+<section class="w-full py-space-lg bg-surface">
+<div class="w-full max-w-[1440px] mx-auto px-margin">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex items-center gap-space-md relative overflow-hidden">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm shrink-0">
+            1
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-xs text-label-xs text-primary uppercase tracking-wider">Tahap Awal</span>
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Isi Data Diri</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Identitas lengkap &amp; kontak WhatsApp</span>
+</div>
+<span class="material-symbols-outlined absolute -right-3 -bottom-3 text-[72px] text-surface-container opacity-40 select-none pointer-events-none">person_add</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex items-center gap-space-md relative overflow-hidden">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-headline-sm text-headline-sm shrink-0">
+            2
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-xs text-label-xs text-secondary uppercase tracking-wider">Pemeriksaan Spesifik</span>
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Sampaikan Keluhan Gigi</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Tanda gejala &amp; jenis penjamin</span>
+</div>
+<span class="material-symbols-outlined absolute -right-3 -bottom-3 text-surface-container opacity-40 select-none pointer-events-none text-[72px]">dentistry</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex items-center gap-space-md relative overflow-hidden">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-headline-sm text-headline-sm shrink-0">
+            3
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Konfirmasi Akhir</span>
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Simpan Bukti Pendaftaran</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Terima kode konfirmasi kunjungan</span>
+</div>
+<span class="material-symbols-outlined absolute -right-3 -bottom-3 text-surface-container opacity-40 select-none pointer-events-none text-[72px]">fact_check</span>
+</div>
+</div>
+</div>
+</section>
+<!-- KONTEN UTAMA: DUAL PANEL (FORM PENDAFTARAN & INFORMASI PRAKTIK) -->
+<section class="w-full pb-space-xl bg-surface">
+<div class="w-full max-w-[1440px] mx-auto px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- KOLOM KIRI: FORMULIR PENDAFTARAN KUNJUNGAN (8 KOLOM) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<form class="flex flex-col gap-space-lg" id="dentalRegistrationForm" onsubmit="event.preventDefault(); handleSubmitRegistration();">
+<!-- BLOK 1: IDENTITAS PASIEN -->
+<div class="bg-surface-container-lowest rounded-xl p-space-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Data Pribadi Pasien</h2>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Tanda (<span class="text-error">*</span>) wajib diisi</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Nama Lengkap -->
+<div class="flex flex-col gap-space-xs md:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant" for="fullName">
+                    Nama Lengkap Pasien <span class="text-error">*</span>
+</label>
+<input class="h-10 px-space-md bg-surface-container-lowest text-on-surface rounded-lg outline-none transition-all placeholder:text-outline focus:bg-surface-container-lowest" id="fullName" placeholder="Contoh: Anita Rahmawati" required="" type="text"/>
+</div>
+<!-- NIK (Opsional) -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between" for="nikNumber">
+<span>Nomor Induk Kependudukan (NIK)</span>
+<span class="text-on-surface-variant text-[11px] font-normal">Opsional (16 Digit)</span>
+</label>
+<input class="h-10 px-space-md bg-surface-container-lowest text-on-surface rounded-lg outline-none transition-all placeholder:text-outline" id="nikNumber" maxlength="16" pattern="[0-9]{16}" placeholder="317201xxxxxxxxxx" type="text"/>
+</div>
+<!-- Jenis Kelamin -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">
+                    Jenis Kelamin <span class="text-error">*</span>
+</label>
+<div class="grid grid-cols-2 gap-space-xs h-10">
+<label class="flex items-center justify-center gap-space-xs bg-surface-container-low rounded-lg cursor-pointer px-space-sm hover:bg-surface-container transition-colors">
+<input class="accent-primary" name="gender" required="" type="radio" value="Laki-laki"/>
+<span class="font-body-md text-body-md text-on-surface">Laki-laki</span>
+</label>
+<label class="flex items-center justify-center gap-space-xs bg-surface-container-low rounded-lg cursor-pointer px-space-sm hover:bg-surface-container transition-colors">
+<input checked="" class="accent-primary" name="gender" required="" type="radio" value="Perempuan"/>
+<span class="font-body-md text-body-md text-on-surface">Perempuan</span>
+</label>
+</div>
+</div>
+<!-- Tanggal Lahir & Estimasi Usia -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="birthDate">
+                    Tanggal Lahir <span class="text-error">*</span>
+</label>
+<div class="flex items-center gap-space-xs">
+<input class="h-10 flex-1 px-space-md bg-surface-container-lowest text-on-surface rounded-lg outline-none transition-all" id="birthDate" onchange="calculateAge(this.value)" required="" type="date"/>
+<div class="h-10 px-space-sm bg-surface-container-high text-on-surface-variant font-label-xs text-label-xs rounded-lg flex items-center justify-center min-w-[70px]" id="ageDisplayBadge">
+                      - Thn
+                    </div>
+</div>
+</div>
+<!-- Kontak HP / WhatsApp -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="phoneNumber">
+                    Nomor WhatsApp / HP Aktif <span class="text-error">*</span>
+</label>
+<div class="flex items-center">
+<span class="h-10 px-space-sm bg-surface-container-high text-on-surface-variant font-label-md text-label-md flex items-center justify-center rounded-l-lg">+62</span>
+<input class="h-10 flex-1 px-space-md bg-surface-container-lowest text-on-surface rounded-r-lg outline-none transition-all placeholder:text-outline" id="phoneNumber" placeholder="81234567890" required="" type="tel"/>
+</div>
+</div>
+<!-- Alamat Lengkap -->
+<div class="flex flex-col gap-space-xs md:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant" for="address">
+                    Alamat Domisili Lengkap <span class="text-error">*</span>
+</label>
+<input class="h-10 px-space-md bg-surface-container-lowest text-on-surface rounded-lg outline-none transition-all placeholder:text-outline" id="address" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota" required="" type="text"/>
+</div>
+<!-- Riwayat Alergi -->
+<div class="flex flex-col gap-space-xs md:col-span-2 pt-space-xs">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between">
+<span>Riwayat Alergi Medis / Bahan Gigi</span>
+<span class="text-on-surface-variant text-[11px] font-normal">Pilih bila ada</span>
+</label>
+<div class="flex flex-wrap gap-space-xs">
+<label class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1 rounded-lg cursor-pointer hover:bg-surface-container">
+<input class="accent-primary" name="allergy" type="checkbox" value="Penisilin / Antibiotik"/>
+<span class="font-body-sm text-body-sm text-on-surface">Penisilin / Antibiotik</span>
+</label>
+<label class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1 rounded-lg cursor-pointer hover:bg-surface-container">
+<input class="accent-primary" name="allergy" type="checkbox" value="Obat Bius / Anestesi Lokal"/>
+<span class="font-body-sm text-body-sm text-on-surface">Anestesi Lokal</span>
+</label>
+<label class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1 rounded-lg cursor-pointer hover:bg-surface-container">
+<input class="accent-primary" name="allergy" type="checkbox" value="Latex Sarung Tangan"/>
+<span class="font-body-sm text-body-sm text-on-surface">Sarung Tangan Latex</span>
+</label>
+<label class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1 rounded-lg cursor-pointer hover:bg-surface-container">
+<input class="accent-primary" name="allergy" type="checkbox" value="Aspirin / NSAID"/>
+<span class="font-body-sm text-body-sm text-on-surface">Aspirin / Pereda Nyeri</span>
+</label>
+<label class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1 rounded-lg cursor-pointer hover:bg-surface-container">
+<input class="accent-primary" id="noAllergyCheckbox" name="allergy" onchange="toggleAllergies(this)" type="checkbox" value="Tidak Ada"/>
+<span class="font-body-sm text-body-sm text-on-surface">Tidak Ada Alergi</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- BLOK 2: KELUHAN GIGI & PENJAMIN -->
+<div class="bg-surface-container-lowest rounded-xl p-space-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center gap-space-sm pb-space-sm">
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">medical_services</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Informasi Kunjungan Poli Gigi</h2>
+</div>
+<!-- Pilihan Cepat Keluhan -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">
+                  Keluhan Utama Gigi &amp; Mulut <span class="text-error">*</span>
+</label>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pilih gejala yang paling menggambarkan kondisi gigi Anda saat ini:</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-xs mt-1">
+<button class="complaint-btn text-left p-space-sm bg-surface-container-low rounded-lg transition-all hover:bg-surface-container flex items-start gap-space-xs" onclick="selectComplaintTag(this, 'Gigi berlubang / ngilu saat minum dingin atau manis')" type="button">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">sentiment_dissatisfied</span>
+<span class="font-body-sm text-body-sm text-on-surface leading-snug">Gigi berlubang / ngilu</span>
+</button>
+<button class="complaint-btn text-left p-space-sm bg-surface-container-low rounded-lg transition-all hover:bg-surface-container flex items-start gap-space-xs" onclick="selectComplaintTag(this, 'Sakit gusi / gusi bengkak dan berdarah')" type="button">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">healing</span>
+<span class="font-body-sm text-body-sm text-on-surface leading-snug">Sakit gusi / bengkak</span>
+</button>
+<button class="complaint-btn text-left p-space-sm bg-surface-container-low rounded-lg transition-all hover:bg-surface-container flex items-start gap-space-xs" onclick="selectComplaintTag(this, 'Pembersihan karang gigi rutin (Scaling)')" type="button">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">clean_hands</span>
+<span class="font-body-sm text-body-sm text-on-surface leading-snug">Pembersihan karang gigi</span>
+</button>
+<button class="complaint-btn text-left p-space-sm bg-surface-container-low rounded-lg transition-all hover:bg-surface-container flex items-start gap-space-xs" onclick="selectComplaintTag(this, 'Tambalan gigi lepas / dinding gigi pecah')" type="button">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">handyman</span>
+<span class="font-body-sm text-body-sm text-on-surface leading-snug">Tambalan lepas / patah</span>
+</button>
+<button class="complaint-btn text-left p-space-sm bg-surface-container-low rounded-lg transition-all hover:bg-surface-container flex items-start gap-space-xs" onclick="selectComplaintTag(this, 'Pemasangan kawat gigi baru atau kontrol behel')" type="button">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">linear_scale</span>
+<span class="font-body-sm text-body-sm text-on-surface leading-snug">Pemasangan behel / kontrol</span>
+</button>
+<button class="complaint-btn text-left p-space-sm bg-surface-container-low rounded-lg transition-all hover:bg-surface-container flex items-start gap-space-xs" onclick="selectComplaintTag(this, 'Konsultasi cabut gigi / gigi bungsu impaksi')" type="button">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">delete_outline</span>
+<span class="font-body-sm text-body-sm text-on-surface leading-snug">Ekstraksi / cabut gigi</span>
+</button>
+</div>
+</div>
+<!-- Uraian Keluhan -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="complaintDetail">
+                  Uraian Tambahan Keluhan Pasien <span class="text-error">*</span>
+</label>
+<textarea class="p-space-md bg-surface-container-lowest text-on-surface rounded-lg outline-none transition-all placeholder:text-outline resize-none" id="complaintDetail" placeholder="Tuliskan bagian gigi mana yang bermasalah (misal: gigi geraham kanan bawah) dan sejak kapan keluhan dirasakan..." required="" rows="3"></textarea>
+</div>
+<!-- Jenis Penjamin -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">
+                  Jenis Penjamin Pembayaran <span class="text-error">*</span>
+</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<label class="relative flex items-center gap-space-sm p-space-md bg-surface-container-low rounded-lg cursor-pointer hover:bg-surface-container transition-colors">
+<input checked="" class="accent-primary" name="guarantorType" onchange="handleGuarantorChange('Umum')" type="radio" value="Umum"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Umum / Pribadi</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pembayaran mandiri</span>
+</div>
+</label>
+<label class="relative flex items-center gap-space-sm p-space-md bg-surface-container-low rounded-lg cursor-pointer hover:bg-surface-container transition-colors">
+<input class="accent-primary" name="guarantorType" onchange="handleGuarantorChange('BPJS')" type="radio" value="BPJS Kesehatan"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">BPJS Kesehatan</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Faskes Tingkat Pertama</span>
+</div>
+</label>
+<label class="relative flex items-center gap-space-sm p-space-md bg-surface-container-low rounded-lg cursor-pointer hover:bg-surface-container transition-colors">
+<input class="accent-primary" name="guarantorType" onchange="handleGuarantorChange('Asuransi')" type="radio" value="Asuransi Swasta"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Asuransi Swasta</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Kemitraan korporasi / TPA</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Input Nomor Penjamin (Wajib label: "Nomor penjamin") -->
+<div class="flex flex-col gap-space-xs" id="guarantorNumberContainer">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between" for="guarantorNumber" id="guarantorNumberLabel">
+<span>Nomor penjamin</span>
+<span class="text-on-surface-variant text-[11px] font-normal" id="guarantorRequirementTag">Tidak diperlukan untuk pasien Umum</span>
+</label>
+<div class="relative">
+<input class="h-10 w-full px-space-md bg-surface-container text-on-surface rounded-lg outline-none transition-all placeholder:text-outline disabled:opacity-60 disabled:cursor-not-allowed" disabled="" id="guarantorNumber" placeholder="Hanya diisi jika menggunakan BPJS atau Asuransi Swasta" type="text"/>
+<span class="text-body-sm font-body-sm text-on-surface-variant mt-1 block" id="guarantorHelpText">
+                    Pilih BPJS Kesehatan atau Asuransi Swasta di atas untuk mengaktifkan kolom input nomor penjamin.
+                  </span>
+</div>
+</div>
+<!-- Informasi Penjelas Tindakan & Biaya (TANPA TARIF KONSULTASI) -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">info</span>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md text-on-surface">Transparansi Pelayanan &amp; Biaya</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Pelayanan medis gigi, rencana perawatan, serta rincian biaya tindakan dan resep obat akan dikonfirmasi langsung oleh dokter gigi dan petugas di klinik setelah pemeriksaan awal pada unit dental. Klinik tidak mengenakan biaya tarif konsultasi terpisah.
+                  </p>
+</div>
+</div>
+<!-- SUBMIT BUTTON & VALIDASI -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span class="font-body-sm text-body-sm">Data rekam medis Anda terlindungi dan terintegrasi standar faskes.</span>
+</div>
+<button class="w-full sm:w-auto min-w-[200px] h-10 px-space-lg bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-sm hover:bg-primary-container transition-colors flex items-center justify-center gap-space-xs" id="submitBtn" type="submit">
+<span>Daftar Kunjungan</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</form>
+<!-- MODAL / CONTAINER HASIL BUKTI PENDAFTARAN (MUNCUL SETELAH SUBMIT) -->
+<div class="hidden bg-surface-container-lowest rounded-xl p-space-xl shadow-md flex-col gap-space-md animate-fade-in" id="confirmationResultCard">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">check_circle</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Pendaftaran Berhasil Dicatat</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Kunjungan Terkonfirmasi untuk Hari Ini (03 November 2026)</span>
+</div>
+</div>
+<button class="h-9 px-space-md bg-surface-container-high text-on-surface rounded-lg font-label-sm text-label-sm flex items-center gap-space-xs hover:bg-surface-container transition-colors" onclick="window.print()">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span>Cetak Bukti</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md bg-surface-container-low p-space-md rounded-xl">
+<div>
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Nama Pasien</span>
+<p class="font-label-md text-label-md text-on-surface font-semibold" id="resFullName">-</p>
+</div>
+<div>
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Poli Tujuan</span>
+<p class="font-label-md text-label-md text-primary font-semibold">Poli Gigi &amp; Mulut Rawat Jalan</p>
+</div>
+<div>
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Metode Penjamin</span>
+<p class="font-body-md text-body-md text-on-surface" id="resGuarantor">-</p>
+</div>
+<div>
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Nomor Penjamin</span>
+<p class="font-body-md text-body-md text-on-surface" id="resGuarantorNum">-</p>
+</div>
+<div class="md:col-span-2">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Keluhan Gigi</span>
+<p class="font-body-md text-body-md text-on-surface" id="resComplaint">-</p>
+</div>
+</div>
+<div class="p-space-sm bg-secondary-container/30 rounded-lg flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">how_to_reg</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Silakan tunjukkan nama lengkap Anda atau nomor HP ini kepada petugas resepsionis saat tiba di poli gigi untuk verifikasi fisik.
+              </p>
+</div>
+</div>
+</div>
+<!-- KOLOM KANAN: DOKTER PRAKTIK, JAM OPERASIONAL & FASILITAS DENTAL (4 KOLOM) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- KARTU DOKTER GIGI HARI INI -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">clinical_notes</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Dokter Praktik Hari Ini</h3>
+</div>
+<span class="bg-secondary-container text-on-secondary-container font-label-xs text-label-xs px-2 py-0.5 rounded-full">Aktif Bertugas</span>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Dokter 1: drg. Senja Puspa, Sp.KG -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-md">
+<img class="w-14 h-14 rounded-full object-cover shrink-0 shadow-sm" data-alt="Potret profesional dokter gigi perempuan ramah drg Senja Puspa SpKG mengenakan scrub bedah medis hijau toska muda dengan jas putih dokter gigi bersih dan stetoskop di latar belakang dental clinic bernuansa tenang dan modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc1_LK4HtHxasCifApc3p2zmPdtHmGBDd_iruYg05Cy7KrKJyw1DEnqMUIrpIkOaFjEG2MjHtYpLeTIvGcy7mdVT_GgxUBr7EcRPk2OoaTobsSviSej_xIqnNUvZ883fXggkKtYE5R0XC-3a3jo-peVSdf7K3rZkb3iaRFU75K_-7uccFhhlJ4NQWzWBOs7FRky_PzHrOV4NzFduMId4ZKlAX99uDdfGxTgX4HdV49"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">drg. Senja Puspa, Sp.KG</span>
+<span class="font-body-sm text-body-sm text-primary">Spesialis Konservasi Gigi</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Sesi Siang: 09.00 - 15.00 WIB</span>
+</div>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant bg-surface-container-lowest rounded-lg p-space-xs px-space-sm">
+                  Keahlian: Perawatan saluran akar, penambalan estetik komposit, dan restorasi mahkota gigi.
+                </div>
+</div>
+<!-- Dokter 2: drg. Dimas Ananta -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-md">
+<img class="w-14 h-14 rounded-full object-cover shrink-0 shadow-sm" data-alt="Potret dokter gigi pria drg Dimas Ananta dengan senyum hangat memakai seragam scrub medis warna teal rapi dan lencana nama klinik gigi modern di ruangan periksa klinik bersih berstandar tinggi." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB00d60Ue_6YhirYLl9uR5RZtq-AeU7x9wIuz1zf6IZw187MjAGt5XZepYMkml1q6NaMnRUehfcDhNQSs7VouBpR46FgYHrkZiBahlDwXafEC-0pnp6ZWio2CAlcv5PfB6yM7sWDtfEOocMQl1c2qmO-mbsVrqexASF83EnCKGOYa2vx7iSJK23PIq7y0UTc_ULWoUtBbD5udtqrLAiKy5_pqcvLczuqvh_ZxeA0JQH"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">drg. Dimas Ananta</span>
+<span class="font-body-sm text-body-sm text-secondary">Dokter Gigi Umum &amp; Bedah Minor</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Sesi Sore: 15.00 - 20.00 WIB</span>
+</div>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant bg-surface-container-lowest rounded-lg p-space-xs px-space-sm">
+                  Keahlian: Pembersihan karang gigi ultrasonic, pencabutan gigi, dan penanganan kegawatdaruratan gigi.
+                </div>
+</div>
+</div>
+</div>
+<!-- KARTU JADWAL BUKA POLI -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs pb-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">schedule</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Jam Operasional Pelayanan</h3>
+</div>
+<div class="flex flex-col gap-space-xs text-body-sm font-body-sm">
+<div class="flex items-center justify-between py-1 bg-surface-container-low px-space-sm rounded-lg">
+<span class="text-on-surface">Senin - Jumat</span>
+<span class="font-semibold text-primary">08.00 - 20.00 WIB</span>
+</div>
+<div class="flex items-center justify-between py-1 bg-surface-container-low px-space-sm rounded-lg">
+<span class="text-on-surface">Sabtu</span>
+<span class="font-semibold text-on-surface">08.00 - 17.00 WIB</span>
+</div>
+<div class="flex items-center justify-between py-1 bg-surface-container-low px-space-sm rounded-lg">
+<span class="text-on-surface">Minggu / Libur</span>
+<span class="text-error font-medium">Hanya Kasus Gawat Darurat</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Pendaftaran form hari ini berlaku hingga jam operasional klinik berakhir pada pukul 20.00 WIB.
+            </p>
+</div>
+<!-- KARTU FASILITAS DENTAL UNIT & HIGIENE MEDIS -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">sanitizer</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Fasilitas Dental Modern</h3>
+</div>
+<div class="relative rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-44 object-cover" data-alt="Ruang perawatan poli gigi yang sangat bersih dan canggih dengan dental chair modern ergonomis berlapis kulit lembut, lampu operasi LED presisi, monitor intraoral digital, dan peralatan medis yang tersusun rapi higienis." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLBfRhdMfsvpo5OgVKJWjDVbflSSb4XwyfaVlxH3UGB4D_piZLneTMEGH8kyfALjud4Eo97zdBkpJwZwZdDs8I-yW19VETCPA3MiD_z8E3iaixQJI4hBt1YL3WetxD7uj_T9jMN6AUPYt2Z7IbdjIWN1GbRs2VZGmlaUr1RsuqOKYih3bawMN3v_Pq9AMpU8655QDhr_FD6BeTi-2vSJ9vRl0FFIlX8pSR3N15Z-9Y"/>
+<div class="absolute bottom-0 inset-x-0 p-space-sm bg-inverse-surface/80 text-inverse-on-surface backdrop-blur-sm">
+<span class="font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed">verified</span>
+                  Sterilisasi Autoclave Kelas B &amp; Rontgen Gigi Digital
+                </span>
+</div>
+</div>
+<ul class="flex flex-col gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">check</span>
+<span>Dental unit ergonomis berfilter air steril UV mandiri.</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">check</span>
+<span>Kamera intraoral untuk visualisasi langsung kondisi gigi Anda.</span>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">check</span>
+<span>Pencatatan odontogram digital terintegrasi rekam medis pasien.</span>
+</li>
+</ul>
+</div>
+<!-- BANTUAN OPERASIONAL -->
+<div class="bg-secondary-container/40 rounded-xl p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-on-secondary-container text-[24px]">support_agent</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-secondary-container">Kendala Pendaftaran?</span>
+<span class="font-body-sm text-body-sm text-on-secondary-container">Petugas kami siap memandu</span>
+</div>
+</div>
+<a class="font-label-xs text-label-xs bg-surface-container-lowest text-on-surface px-space-md py-1.5 rounded-lg shadow-sm font-semibold hover:bg-surface-container transition-colors" href="tel:0215558921">
+              Hubungi Klinik
+            </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- JAVASCRIPT LOGIKA FORMULIR INTERAKTIF -->
+<script>
+    function calculateAge(birthDateString) {
+      if (!birthDateString) return;
+      const today = new Date('2026-11-03'); // Tanggal sistem
+      const birthDate = new Date(birthDateString);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      const badge = document.getElementById('ageDisplayBadge');
+      if (age >= 0 && !isNaN(age)) {
+        badge.innerText = age + ' Thn';
+        badge.className = 'h-10 px-space-sm bg-secondary-container text-on-secondary-container font-label-xs text-label-xs rounded-lg flex items-center justify-center min-w-[70px] font-semibold';
+      } else {
+        badge.innerText = '- Thn';
+        badge.className = 'h-10 px-space-sm bg-surface-container-high text-on-surface-variant font-label-xs text-label-xs rounded-lg flex items-center justify-center min-w-[70px]';
+      }
+    }
+
+    function toggleAllergies(checkbox) {
+      const allergyCheckboxes = document.querySelectorAll('input[name="allergy"]');
+      if (checkbox.checked) {
+        allergyCheckboxes.forEach(cb => {
+          if (cb !== checkbox) {
+            cb.checked = false;
+            cb.disabled = true;
+          }
+        });
+      } else {
+        allergyCheckboxes.forEach(cb => {
+          cb.disabled = false;
+        });
+      }
+    }
+
+    function selectComplaintTag(button, complaintText) {
+      const textarea = document.getElementById('complaintDetail');
+      const allButtons = document.querySelectorAll('.complaint-btn');
+      allButtons.forEach(btn => {
+        btn.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+        btn.classList.add('bg-surface-container-low');
+      });
+
+      button.classList.remove('bg-surface-container-low');
+      button.classList.add('bg-secondary-container', 'text-on-secondary-container');
+
+      if (textarea.value.trim() === '') {
+        textarea.value = complaintText + ': ';
+      } else {
+        textarea.value = textarea.value + '\n- ' + complaintText;
+      }
+      textarea.focus();
+    }
+
+    function handleGuarantorChange(type) {
+      const numberInput = document.getElementById('guarantorNumber');
+      const reqTag = document.getElementById('guarantorRequirementTag');
+      const helpText = document.getElementById('guarantorHelpText');
+
+      if (type === 'Umum') {
+        numberInput.disabled = true;
+        numberInput.required = false;
+        numberInput.value = '';
+        numberInput.placeholder = 'Hanya diisi jika menggunakan BPJS atau Asuransi Swasta';
+        numberInput.className = 'h-10 w-full px-space-md bg-surface-container text-on-surface rounded-lg outline-none transition-all placeholder:text-outline disabled:opacity-60 disabled:cursor-not-allowed';
+        reqTag.innerText = 'Tidak diperlukan untuk pasien Umum';
+        reqTag.className = 'text-on-surface-variant text-[11px] font-normal';
+        helpText.innerText = 'Pilih BPJS Kesehatan atau Asuransi Swasta di atas untuk mengaktifkan kolom input nomor penjamin.';
+      } else if (type === 'BPJS') {
+        numberInput.disabled = false;
+        numberInput.required = true;
+        numberInput.placeholder = 'Masukkan 13 digit Nomor Peserta BPJS Kesehatan';
+        numberInput.className = 'h-10 w-full px-space-md bg-surface-container-lowest text-on-surface rounded-lg outline-none transition-all placeholder:text-outline';
+        reqTag.innerText = 'Wajib diisi (13 Digit)';
+        reqTag.className = 'text-primary font-semibold text-[11px]';
+        helpText.innerText = 'Pastikan kepesertaan BPJS Kesehatan aktif dan terhubung dengan fasilitas kesehatan yang berlaku.';
+        numberInput.focus();
+      } else if (type === 'Asuransi') {
+        numberInput.disabled = false;
+        numberInput.required = true;
+        numberInput.placeholder = 'Masukkan Nomor Polis / Kepesertaan Asuransi Swasta';
+        numberInput.className = 'h-10 w-full px-space-md bg-surface-container-lowest text-on-surface rounded-lg outline-none transition-all placeholder:text-outline';
+        reqTag.innerText = 'Wajib diisi untuk klaim asuransi';
+        reqTag.className = 'text-primary font-semibold text-[11px]';
+        helpText.innerText = 'Sertakan nomor identitas asuransi atau nomor polis yang tertera pada dokumen pertanggungan.';
+        numberInput.focus();
+      }
+    }
+
+    function handleSubmitRegistration() {
+      const form = document.getElementById('dentalRegistrationForm');
+      const fullName = document.getElementById('fullName').value;
+      const phone = document.getElementById('phoneNumber').value;
+      const guarantor = document.querySelector('input[name="guarantorType"]:checked').value;
+      const guarantorNum = document.getElementById('guarantorNumber').value || 'Tidak menggunakan penjamin (Pasien Umum)';
+      const complaint = document.getElementById('complaintDetail').value;
+
+      if (!fullName || !phone || !complaint) {
+        alert('Mohon lengkapi seluruh field wajib bertanda bintang (*)');
+        return;
+      }
+
+      // Tampilkan Konfirmasi Ringkasan Bukti
+      document.getElementById('resFullName').innerText = fullName;
+      document.getElementById('resGuarantor').innerText = guarantor;
+      document.getElementById('resGuarantorNum').innerText = guarantorNum;
+      document.getElementById('resComplaint').innerText = complaint;
+
+      const resultCard = document.getElementById('confirmationResultCard');
+      resultCard.classList.remove('hidden');
+      resultCard.classList.add('flex');
+      
+      // Scroll halus ke kartu hasil pendaftaran
+      resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      // Disable submit button untuk indikasi proses selesai
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done</span><span>Terdaftar</span>';
+      submitBtn.classList.remove('bg-primary');
+      submitBtn.classList.add('bg-secondary', 'cursor-default');
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="w-full max-w-[1440px] mx-auto px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-gutter"><div class="flex flex-col gap-space-sm md:col-span-2"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">dentistry</span></div><span class="font-headline-sm text-headline-sm text-on-surface">Klinik Gigi Rawat Jalan</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Pelayanan kesehatan gigi dan mulut profesional terpadu dengan standar sterilisasi medis tinggi, rekam medis digital komprehensif, dan kenyamanan perawatan menyeluruh bagi seluruh keluarga.</p><div class="flex items-center gap-space-xs mt-space-xs"><span class="material-symbols-outlined text-secondary text-[18px]">location_on</span><span class="font-body-sm text-body-sm text-on-surface-variant">Jl. Medika Sehat No. 42, Poliklinik Rawat Jalan Mandiri, Jakarta Selatan</span></div></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Jam Pelayanan</span><div class="flex flex-col gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><div><span class="font-medium text-on-surface">Senin - Jumat:</span><br/>08.00 - 20.00 WIB</div><div><span class="font-medium text-on-surface">Sabtu:</span><br/>08.00 - 17.00 WIB</div><div><span class="font-medium text-on-surface">Minggu &amp; Libur Nasional:</span><br/>Hanya Kasus Gawat Darurat Gigi</div></div></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Kontak Penting</span><div class="flex flex-col gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-secondary">phone</span><span>(021) 555-8921</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-primary">emergency_share</span><span class="font-semibold text-primary">0812-9988-7711 (Emergency)</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-secondary">mail</span><span>pelayanan@klinikgigi.id</span></div></div></div></div><div class="mt-space-xl pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-sm"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2024 Klinik Gigi - Sistem Informasi Pelayanan Pasien. Hak Cipta Dilindungi.</span><span class="font-label-xs text-label-xs text-on-surface-variant">Portal Akses Publik Pasien Mandiri</span></div></div></footer></body></html>

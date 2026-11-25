@@ -2,14 +2,15 @@
 
 @section('content')
 <div class="container-fluid">
+    @if ($errors->any())
+        <div class="alert alert-danger" role="alert">Filter belum valid: {{ $errors->first() }}</div>
+    @endif
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h3 class="fw-bold mb-1"><i class="fa-solid fa-clipboard-check text-primary me-2"></i>Laporan Tindakan Medis</h3>
-            <p class="text-muted mb-0">Rekapitulasi prosedur medis, tindakan gigi, bedah minor, dan laboratorium</p>
+            <p class="text-muted mb-0">Rekapitulasi tindakan dan pelayanan gigi pada periode yang dipilih</p>
         </div>
-        <button onclick="window.print()" class="btn btn-primary px-3 shadow-sm fw-semibold">
-            <i class="fa-solid fa-print me-1"></i> Cetak Laporan Tindakan
-        </button>
+        <a href="{{ route('reports.treatments.pdf', request()->query()) }}" class="btn btn-primary no-print">Unduh PDF</a>
     </div>
 
     <!-- Filter Bar -->

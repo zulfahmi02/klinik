@@ -4,23 +4,7 @@ use App\Models\Patient;
 use App\Models\User;
 use App\Models\Visit;
 
-function registrationData(): array
-{
-    return [
-        'registration_token' => 'test-token',
-        'nama' => 'Pasien Mandiri',
-        'nik' => '3273010101900001',
-        'jenis_kelamin' => 'L',
-        'tanggal_lahir' => '1990-01-01',
-        'no_hp' => '081234567890',
-        'alamat' => 'Jalan Melati 1',
-        'penjamin' => 'Umum',
-        'poli' => 'Poli Umum',
-        'keluhan' => 'Batuk sejak kemarin',
-    ];
-}
-
-test('public registration creates patient and queued visit without a staff account', function () {
+test('public registration creates patient and visit without a queue without a staff account', function () {
     $this->withSession(['registration_token' => 'test-token'])
         ->post(route('registration.store'), registrationData())
         ->assertRedirect(route('registration.success'));
@@ -28,8 +12,8 @@ test('public registration creates patient and queued visit without a staff accou
     $this->assertGuest();
     $this->assertDatabaseCount('users', 0);
     $this->assertDatabaseCount('patients', 1);
-    $this->assertDatabaseHas('visits', ['patient_id' => Patient::first()->id, 'no_antrean' => 'A-001', 'status' => 'Menunggu', 'status_pembayaran' => 'Belum Lunas']);
-    $this->get(route('registration.success'))->assertOk()->assertSee('A-001')->assertDontSee('3273010101900001');
+    $this->assertDatabaseHas('visits', ['patient_id' => Patient::first()->id, 'status' => 'Menunggu', 'status_pembayaran' => 'Belum Lunas']);
+    $this->get(route('registration.success'))->assertOk()->assertDontSee('antrean')->assertDontSee(Visit::first()->no_antrean)->assertDontSee('3273010101900001');
 });
 
 test('resubmitting the completed form does not duplicate the visit', function () {
@@ -63,21 +47,25 @@ test('public registration rejects expired forms and missing insurer number', fun
     $this->assertDatabaseCount('patients', 0);
 });
 
-test('staff and public registrations share queue allocation', function () {
+test('staff and public registrations use unique internal references', function () {
     $this->withSession(['registration_token' => 'test-token'])->post(route('registration.store'), registrationData());
     $this->actingAs(User::factory()->create())->post(route('visits.store'), [
         'patient_id' => Patient::first()->id,
-        'poli' => 'Poli Umum',
+        'poli' => 'Poli Gigi',
         'penjamin' => 'Umum',
         'no_antrean' => 'A-001',
     ])->assertRedirect(route('visits.index'));
-    expect(Visit::orderBy('id')->pluck('no_antrean')->all())->toBe(['A-001', 'A-002']);
+    expect(Visit::pluck('no_antrean')->unique())->toHaveCount(2);
+    foreach (Visit::pluck('no_antrean') as $reference) {
+        expect($reference)->toStartWith('VIS-');
+    }
+    $this->assertDatabaseMissing('registration_counters', ['name' => 'visit:'.now('Asia/Jakarta')->toDateString()]);
 });
 
 test('reports and patient lists require staff login', function () {
-    $this->get('/laporan')->assertRedirect(route('login'));
+    $this->get('/laporan')->assertRedirect(route('reports.login'));
     $this->get(route('patients.index'))->assertRedirect(route('login'));
-    $this->get(route('reports.finance'))->assertRedirect(route('login'));
+    $this->get(route('reports.finance'))->assertRedirect(route('reports.login'));
     $this->get(route('registration.success'))->assertRedirect(route('registration.create'));
-    $this->actingAs(User::factory()->create())->get('/laporan')->assertOk();
+    $this->actingAs(User::factory()->create())->get('/laporan')->assertRedirect(route('reports.login'));
 });

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container":"#eceef0","on-tertiary-fixed":"#001d31","on-secondary":"#ffffff","inverse-primary":"#6bd8cb","on-secondary-fixed":"#00201c","error":"#ba1a1a","on-error-container":"#93000a","tertiary":"#006194","inverse-surface":"#2d3133","error-container":"#ffdad6","tertiary-fixed-dim":"#93ccff","surface":"#f7f9fb","surface-container-low":"#f2f4f6","tertiary-container":"#007bb9","on-primary-fixed":"#00201d","surface-container-high":"#e6e8ea","surface-dim":"#d8dadc","primary-fixed-dim":"#6bd8cb","primary":"#00685f","outline":"#6d7a77","primary-fixed":"#89f5e7","on-surface-variant":"#3d4947","surface-container-lowest":"#ffffff","on-primary-container":"#f4fffc","on-primary":"#ffffff","surface-container-highest":"#e0e3e5","secondary-fixed-dim":"#a2d0c6","on-tertiary-container":"#fdfcff","on-background":"#191c1e","secondary-fixed":"#bdece2","surface-bright":"#f7f9fb","on-secondary-fixed-variant":"#224e47","surface-tint":"#006a61","secondary-container":"#bdece2","on-error":"#ffffff","on-primary-fixed-variant":"#005049","on-secondary-container":"#416c65","inverse-on-surface":"#eff1f3","on-tertiary-fixed-variant":"#004b73","on-tertiary":"#ffffff","outline-variant":"#bcc9c6","secondary":"#3b665f","on-surface":"#191c1e","background":"#f7f9fb","primary-container":"#008378","tertiary-fixed":"#cce5ff","surface-variant":"#e0e3e5"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","space-lg":"1.5rem","margin":"2rem","space-xl":"2rem","gutter":"1.5rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter-mobile":"0.75rem"},"fontFamily":{"body-md":["Inter"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"body-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"label-xs":["Plus Jakarta Sans"],"body-lg":["Inter"],"headline-lg-mobile":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},"fontSize":{"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.015em","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"display-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"display-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-xs":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg-mobile":["22px",{"lineHeight":"30px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm bg-surface-container-lowest"><img alt="Logo Klinik Gigi" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xrb8dGMzOFLb9pvCWDXMkW0flj6_o9RmQESE4QozFa2z1lgH8XiEjz_3qA5jO7qjnsEIYAVN622--AFAbk7OoyB_V51POXM29zS6zIBIMEH0tqZRmUYK2x4nyo9q6tdvjW0M7PBiw2mkwJ96atuXpRrnj2akXJZY_gz0J9NNY7nWECOfAfsx9uWupcKPvh5Zv1ncrdo3yKEJSZ6Kc5h0PD_kODLUhPGAKb9EdwQS_a"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-primary tracking-tight truncate leading-tight">Klinik Gigi</span><span class="font-label-xs text-label-xs text-on-surface-variant truncate">Sistem Informasi Pelayanan Gigi</span></div></div><div class="px-space-md py-space-sm"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-md text-label-md">Dashboard</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Pelayanan</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="data-pasien" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-label-md text-label-md">Data Pasien</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-all bg-primary-container text-on-primary-container font-headline-sm" data-path="kunjungan" href="#"><span class="material-symbols-outlined text-[20px]">event_note</span><span class="font-label-md text-label-md">Kunjungan</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Pengelolaan Dokter</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="data-dokter" href="#"><span class="material-symbols-outlined text-[20px]">stethoscope</span><span class="font-label-md text-label-md">Data Dokter</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="tambah-dokter" href="#"><span class="material-symbols-outlined text-[20px]">person_add</span><span class="font-label-md text-label-md">Tambah Dokter</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Pelaporan</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ringkasan-laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-label-md text-label-md">Ringkasan Laporan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-kunjungan" href="#"><span class="material-symbols-outlined text-[20px]">description</span><span class="font-label-md text-label-md">Laporan Kunjungan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-tindakan" href="#"><span class="material-symbols-outlined text-[20px]">vital_signs</span><span class="font-label-md text-label-md">Laporan Tindakan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-keuangan" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-label-md text-label-md">Laporan Keuangan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-dokter" href="#"><span class="material-symbols-outlined text-[20px]">award_star</span><span class="font-label-md text-label-md">Laporan Dokter</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Akun</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="profil" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-label-md text-label-md">Profil</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ganti-password" href="#"><span class="material-symbols-outlined text-[20px]">key</span><span class="font-label-md text-label-md">Ganti Password</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="keluar" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-label-md text-label-md">Keluar</span></a></nav></div></div><div class="p-space-md m-space-sm bg-surface-container-low rounded-xl flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><div class="relative flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlUxh0NzWa5rJBydaEw1OUrsYTphIf2GqD5MUex0QOlVGwNaFRJo5F1rBg_pWSgi49iAdkv2S0xNsMY5u3yLpUHi9Rjq5WW8TPAwaX5EYOV3i8O-UeOsXt6qw2KYTLHt5aCeRroNwwRIsCX25o1BBLuBhowUpcEa_e3Tjvp6-rEE8KU38nfOIHwgs85hQMvveI7kuu2WGYUKL4ESOQ5euNyRuxGjaDjGAo0sLkAQ0E"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-primary rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex flex-col min-w-0"><span class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">drg. Senja Puspa, Sp.KG</span><span class="font-label-xs text-label-xs text-on-surface-variant truncate">Staf Pelayanan &amp; Dokter</span></div></div><span class="inline-flex items-center px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-xs text-label-xs flex-shrink-0">Online</span></div></aside><div class="pl-72 flex flex-col min-h-screen"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[18px]">home</span><span>/</span><span class="text-primary font-label-sm text-label-sm">Poli Gigi</span></div><span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-xs text-label-xs"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Khusus Poli Gigi - Layanan Aktif</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low px-space-sm py-1 rounded-lg"><span class="material-symbols-outlined text-[18px] text-primary">calendar_today</span><span>03 November 2026</span></div><button class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface transition-all font-label-sm text-label-sm shadow-[0_1px_8px_rgba(0,0,0,0.04)]" type="button"><span class="material-symbols-outlined text-[18px] text-primary">print</span><span>Cetak Dokumen</span></button><button class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface transition-all font-label-sm text-label-sm shadow-[0_1px_8px_rgba(0,0,0,0.04)]" type="button"><span class="material-symbols-outlined text-[18px] text-tertiary">help_outline</span><span>Panduan</span></button><div class="flex items-center pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlUxh0NzWa5rJBydaEw1OUrsYTphIf2GqD5MUex0QOlVGwNaFRJo5F1rBg_pWSgi49iAdkv2S0xNsMY5u3yLpUHi9Rjq5WW8TPAwaX5EYOV3i8O-UeOsXt6qw2KYTLHt5aCeRroNwwRIsCX25o1BBLuBhowUpcEa_e3Tjvp6-rEE8KU38nfOIHwgs85hQMvveI7kuu2WGYUKL4ESOQ5euNyRuxGjaDjGAo0sLkAQ0E"/></div></div></header><main class="relative pt-16 bg-surface min-h-[calc(100vh-4rem)] w-full"><div class="flex flex-col w-full">
+<div class="p-space-lg flex flex-col gap-space-lg max-w-[1520px] mx-auto w-full">
+<!-- Top Action & Context Strip -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm flex-wrap">
+<a class="inline-flex items-center gap-1 text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Daftar Kunjungan</span>
+</a>
+<span class="text-outline-variant">•</span>
+<span class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">Ruang Klinis 02 - Poli Konservasi Gigi</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-xs text-label-xs">
+          ID Sesi: EDR-202611-9812
+        </span>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface transition-all font-label-md text-label-md shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">print</span>
+<span>Cetak / PDF Rekam Gigi</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-container text-on-surface font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">save</span>
+<span>Simpan Draf</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Tandai Selesai &amp; Terbitkan Tagihan</span>
+</button>
+</div>
+</div>
+<!-- Alert Alergi Obat Penting -->
+<div class="rounded-xl p-space-md bg-error-container/30 text-on-error-container flex items-start gap-space-md shadow-sm">
+<div class="p-2 rounded-lg bg-error-container text-error flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">warning</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-center justify-between w-full gap-space-sm">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-error font-semibold flex items-center gap-1.5">
+            Peringatan Kontraindikasi Alergi Berat
+          </span>
+<p class="font-body-md text-body-md text-on-error-container">
+<strong>Alergi: Penisilin, Amoxicillin</strong> — Hati-hati pemberian golongan beta-laktam. Gunakan alternatif Clindamycin atau Macrolide jika profilaksis / antibiotik diperlukan pasca tindakan.
+          </p>
+</div>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-error text-on-error font-label-xs text-label-xs flex-shrink-0 tracking-wider">
+          RISIKO ANAFILAKSIS
+        </span>
+</div>
+</div>
+<!-- Patient Header Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<div class="flex items-start md:items-center gap-space-md">
+<div class="w-14 h-14 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant flex items-center justify-center font-headline-md text-headline-md font-bold flex-shrink-0">
+          SR
+        </div>
+<div class="flex flex-col gap-1 min-w-0">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">Siti Rahmawati</h1>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-medium">
+              Perempuan, 29 Tahun
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-label-xs text-label-xs font-semibold">
+<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+              Sedang Diperiksa
+            </span>
+</div>
+<div class="flex items-center gap-x-4 gap-y-1 flex-wrap text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1">
+<strong class="text-on-surface">No. RM:</strong>
+<span class="font-mono bg-surface-container-high px-1.5 py-0.5 rounded text-primary font-semibold">RM-001089</span>
+</span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<strong class="text-on-surface">Kunjungan:</strong>
+<span class="font-mono">KJ-20261103-004</span>
+</span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">schedule</span>
+              03 November 2026, 09.30 WIB
+            </span>
+</div>
+</div>
+</div>
+<!-- Right Patient Badges & Insurance Meta -->
+<div class="flex flex-col sm:flex-row sm:items-center gap-space-lg pt-space-md xl:pt-0">
+<div class="flex flex-col gap-1">
+<span class="font-label-xs text-label-xs text-outline uppercase tracking-wider">Dokter Penanggung Jawab</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">stethoscope</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">drg. Senja Puspa, Sp.KG</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-xs text-label-xs text-outline uppercase tracking-wider">Jaminan / Penjamin</span>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">
+              BPJS Kesehatan
+            </span>
+<span class="font-mono text-body-sm text-on-surface-variant font-medium">0001892837192</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Tabs Strip -->
+<div class="bg-surface-container-lowest rounded-xl p-1.5 shadow-sm flex items-center gap-2 overflow-x-auto">
+<button class="px-space-md py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md flex items-center gap-2 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">clinical_notes</span>
+<span>A. Pemeriksaan Subjektif &amp; Objektif</span>
+</button>
+<button class="px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-headline-sm text-headline-sm flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">dentistry</span>
+<span>B. Odontogram Digital (Aktif)</span>
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+</button>
+<button class="px-space-md py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md flex items-center gap-2 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<span>C. Tindakan &amp; Biaya</span>
+</button>
+<button class="px-space-md py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md flex items-center gap-2 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>D. Riwayat Kunjungan Poli</span>
+</button>
+</div>
+<!-- Main Workspace Split: Odontogram Canvas vs. Diagnosis & Billing Panel -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column (8 cols): Interactive Odontogram Canvas & Findings Table -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Interactive Odontogram Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<!-- Top Toolbar of Canvas -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Odontogram Dewasa (FDI 32 Gigi)</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-label-xs text-label-xs">
+                Perubahan belum disimpan
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<label class="text-outline font-label-xs text-label-xs" for="historyCompare">Komparasi:</label>
+<select class="bg-surface-container-low text-on-surface font-label-sm text-label-sm rounded-lg px-2.5 py-1.5 outline-none focus:bg-surface-container-lowest transition-all" id="historyCompare">
+<option selected="">Bandingkan: 14 Juli 2026 (drg. Dimas Ananta) [Baca Saja]</option>
+<option>Tidak ada pembanding (Status Terkini)</option>
+</select>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">save</span>
+<span>Simpan Odontogram</span>
+</button>
+</div>
+</div>
+<!-- Color Coding Dental Legend -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs">
+<span class="font-label-xs text-label-xs text-outline font-semibold tracking-wider uppercase">Panduan Kondisi Gigi Resmi (Kemenkes / FDI)</span>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 text-on-surface-variant font-label-xs text-label-xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+</span>
+<span>Sehat / Normal</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded bg-rose-500 text-white flex items-center justify-center font-bold text-[9px]">C</span>
+<span class="text-error font-medium">Karies (Car)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded bg-sky-500 text-white flex items-center justify-center font-bold text-[9px]">F</span>
+<span>Tambalan Komposit</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded bg-amber-400 text-amber-950 flex items-center justify-center font-bold text-[9px]">T</span>
+<span>Tambalan Sementara</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded bg-surface-container-high flex items-center justify-center font-bold text-outline text-[10px]">✕</span>
+<span>Hilang / Missing (Mis)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-[10px]">▲</span>
+<span>Sisa Akar (Rad)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-[9px]">CR</span>
+<span>Mahkota / Crown</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-[9px]">P</span>
+<span>Gigi Tiruan / Bridge</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-[10px]">⤢</span>
+<span>Impaksi (Imp)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded bg-cyan-100 text-cyan-800 flex items-center justify-center font-bold text-[9px]">NV</span>
+<span>Non-Vital / Perio</span>
+</div>
+</div>
+</div>
+<!-- Anatomical / Geometric 5-Surfaces Interactive Canvas Grid -->
+<div class="p-space-md bg-surface rounded-xl overflow-x-auto">
+<div class="min-w-[700px] flex flex-col gap-space-lg">
+<!-- Upper Arch (Rahang Atas / Maxilla) -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between px-2">
+<span class="font-label-xs text-label-xs text-primary font-bold uppercase tracking-wider">Kuadran 1 (Kanan Atas / Maxilla Kanan)</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant font-semibold">Garis Tengah (Midline)</span>
+<span class="font-label-xs text-label-xs text-primary font-bold uppercase tracking-wider">Kuadran 2 (Kiri Atas / Maxilla Kiri)</span>
+</div>
+<div class="flex items-center justify-between gap-1 bg-surface-container-lowest p-3 rounded-xl shadow-sm">
+<!-- Quadrant 1: 18 -> 11 -->
+<div class="flex items-center justify-end gap-2 flex-1">
+<!-- Tooth 18 -->
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">18</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<!-- Tooth 17 -->
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">17</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<!-- Tooth 16 (FILLED: Komposit Oklusal) -->
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-tertiary font-bold">16</span>
+<div class="w-9 h-9 relative bg-sky-50 rounded p-0.5 ring-2 ring-tertiary-fixed shadow-sm">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#93ccff" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#93ccff" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#93ccff" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#93ccff" stroke-width="0.5"></polygon>
+<rect fill="#0284c7" height="16" stroke="#007bb9" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-tertiary font-bold">cfr</span>
+</div>
+<!-- Teeth 15, 14, 13, 12, 11 -->
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">15</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">14</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">13</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">12</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">11</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+</div>
+<!-- Center Midline Divider -->
+<div class="w-px h-16 bg-outline-variant mx-2"></div>
+<!-- Quadrant 2: 21 -> 28 -->
+<div class="flex items-center justify-start gap-2 flex-1">
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">21</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">22</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">23</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">24</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">25</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">26</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">27</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">28</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Lower Arch (Rahang Bawah / Mandibula) -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between px-2">
+<span class="font-label-xs text-label-xs text-primary font-bold uppercase tracking-wider">Kuadran 4 (Kanan Bawah / Mandibula Kanan)</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant font-semibold">Garis Tengah (Midline)</span>
+<span class="font-label-xs text-label-xs text-primary font-bold uppercase tracking-wider">Kuadran 3 (Kiri Bawah / Mandibula Kiri)</span>
+</div>
+<div class="flex items-center justify-between gap-1 bg-surface-container-lowest p-3 rounded-xl shadow-sm">
+<!-- Quadrant 4: 48 -> 41 -->
+<div class="flex items-center justify-end gap-2 flex-1">
+<!-- Tooth 48 -->
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">48</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<!-- Tooth 47 -->
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">47</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<!-- Tooth 46 (CURRENTLY SELECTED & CARIES) -->
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-error font-extrabold">46</span>
+<div class="w-9 h-9 relative bg-rose-50 rounded p-0.5 ring-2 ring-error shadow-md transform scale-110">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#fee2e2" points="2,2 34,2 26,10 10,10" stroke="#fca5a5" stroke-width="0.5"></polygon>
+<polygon fill="#fee2e2" points="34,2 34,34 26,26 26,10" stroke="#fca5a5" stroke-width="0.5"></polygon>
+<polygon fill="#fee2e2" points="2,34 34,34 26,26 10,26" stroke="#fca5a5" stroke-width="0.5"></polygon>
+<polygon fill="#fee2e2" points="2,2 2,34 10,26 10,10" stroke="#fca5a5" stroke-width="0.5"></polygon>
+<!-- Central Occlusal Caries -->
+<rect fill="#ba1a1a" height="16" stroke="#93000a" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+<span class="absolute -top-1.5 -right-1.5 w-3 h-3 bg-error text-white rounded-full flex items-center justify-center text-[7px] font-bold">!</span>
+</div>
+<span class="font-mono text-[10px] text-error font-bold">car</span>
+</div>
+<!-- Teeth 45, 44, 43, 42, 41 -->
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">45</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">44</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">43</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">42</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">41</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+</div>
+<!-- Center Midline Divider -->
+<div class="w-px h-16 bg-outline-variant mx-2"></div>
+<!-- Quadrant 3: 31 -> 38 -->
+<div class="flex items-center justify-start gap-2 flex-1">
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">31</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">32</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">33</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">34</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">35</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">36</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-on-surface-variant font-bold">37</span>
+<div class="w-9 h-9 relative bg-surface-container-low rounded p-0.5 group-hover:bg-secondary-fixed transition-all">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#e2e8f0" points="2,2 34,2 26,10 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="34,2 34,34 26,26 26,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,34 34,34 26,26 10,26" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<polygon fill="#e2e8f0" points="2,2 2,34 10,26 10,10" stroke="#cbd5e1" stroke-width="0.5"></polygon>
+<rect fill="#f8fafc" height="16" stroke="#cbd5e1" stroke-width="0.5" width="16" x="10" y="10"></rect>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-outline">nor</span>
+</div>
+<!-- Tooth 38 (IMPAKSI) -->
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="font-label-xs text-label-xs text-rose-700 font-bold">38</span>
+<div class="w-9 h-9 relative bg-rose-50 rounded p-0.5 ring-1 ring-rose-300">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<polygon fill="#fee2e2" points="2,2 34,2 26,10 10,10" stroke="#fca5a5" stroke-width="0.5"></polygon>
+<polygon fill="#fee2e2" points="34,2 34,34 26,26 26,10" stroke="#fca5a5" stroke-width="0.5"></polygon>
+<polygon fill="#fee2e2" points="2,34 34,34 26,26 10,26" stroke="#fca5a5" stroke-width="0.5"></polygon>
+<polygon fill="#fee2e2" points="2,2 2,34 10,26 10,10" stroke="#fca5a5" stroke-width="0.5"></polygon>
+<rect fill="#fca5a5" height="16" stroke="#f87171" stroke-width="0.5" width="16" x="10" y="10"></rect>
+<line stroke="#dc2626" stroke-width="2" x1="4" x2="32" y1="4" y2="32"></line>
+</svg>
+</div>
+<span class="font-mono text-[10px] text-rose-700 font-bold">imp</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Selected Tooth Detailed Diagnostic Form (Tooth 46) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-error-container text-error flex items-center justify-center font-bold text-headline-sm">46</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Gigi 46 — Geraham Pertama Bawah Kanan</h2>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Permanent Mandibular First Molar</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 font-label-xs text-label-xs font-semibold">
+                Status: Karies Media Oklusal (Aktif)
+              </span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-space-xs">
+<!-- Bidang Terlibat -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Bidang Anatomi Terlibat</label>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-error text-white font-label-sm text-label-sm font-bold">O (Oklusal)</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">M (Mesial)</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">D (Distal)</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">B (Bukal)</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">L (Lingual)</span>
+</div>
+</div>
+<!-- Diagnosis Klinis -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Diagnosis Penyakit (ICD-10 Denta)</label>
+<div class="flex items-center gap-2">
+<select class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-primary">
+<option selected="">K02.1 - Caries of dentine (Karies Media)</option>
+<option>K02.0 - Caries limited to enamel</option>
+<option>K04.0 - Pulpitis reversibel</option>
+<option>K04.1 - Nekrosis Pulpa</option>
+</select>
+</div>
+</div>
+<!-- Rencana Tindakan Terpilih -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Rencana / Tindakan Hari Ini</label>
+<div class="flex items-center gap-2">
+<select class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-primary">
+<option selected="">Penambalan Resin Komposit Sinar (Light-Cure)</option>
+<option>Tambalan Sementara &amp; Pulp Capping</option>
+<option>Perawatan Saluran Akar (PSA Kunjungan 1)</option>
+<option>Glass Ionomer Cement (GIC)</option>
+</select>
+</div>
+</div>
+<!-- Kondisi Khusus / Sensitivitas -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Uji Vitalitas &amp; Perkusi</label>
+<div class="flex items-center gap-3 py-2">
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Vitalitas (+) Dingin
+                </span>
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface">
+<span class="w-2 h-2 rounded-full bg-outline"></span> Perkusi (-) Negatif
+                </span>
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface">
+<span class="w-2 h-2 rounded-full bg-outline"></span> Palpasi (-) Negatif
+                </span>
+</div>
+</div>
+<!-- Catatan Klinis Khusus -->
+<div class="md:col-span-2 flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Catatan Klinis Operator</label>
+<textarea class="w-full bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary" rows="2">Kavitas kelas I Black pada pit &amp; fisur oklusal, kedalaman dentin tengah, sensitif terhadap dingin singkat, perkusi negatif, tidak goyang. Preparasi tuntas, lining Ca(OH)2, etsa-bonding, restorasi nanohibrid resin shade A2.</textarea>
+</div>
+</div>
+</div>
+<!-- Tabel Temuan Odontogram Kunjungan Ini -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Ringkasan Temuan Odontogram Pasien</h3>
+<span class="font-label-xs text-label-xs text-outline">3 Gigi Dalam Pemantauan</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-xs text-label-xs uppercase">
+<th class="p-3 rounded-l-lg">No. Gigi</th>
+<th class="p-3">Posisi Bidang</th>
+<th class="p-3">Kondisi / Diagnosis</th>
+<th class="p-3">Status Penanganan</th>
+<th class="p-3 rounded-r-lg text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-surface-container-low">
+<tr>
+<td class="p-3 font-bold text-tertiary">Gigi 16</td>
+<td class="p-3">Oklusal</td>
+<td class="p-3">Tambalan Komposit (Baik, Kunjungan Lalu 14/07/26)</td>
+<td class="p-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label-xs text-label-xs font-semibold">
+                      Stabil / Kontrol
+                    </span>
+</td>
+<td class="p-3 text-right">
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm font-semibold" type="button">Lihat Detail</button>
+</td>
+</tr>
+<tr class="bg-rose-50/50">
+<td class="p-3 font-bold text-error">Gigi 46</td>
+<td class="p-3 font-semibold text-error">Oklusal (Kelas I)</td>
+<td class="p-3 font-semibold">Karies Media Dentin</td>
+<td class="p-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-label-xs text-label-xs font-semibold">
+                      Sedang Ditangani Hari Ini
+                    </span>
+</td>
+<td class="p-3 text-right">
+<span class="font-label-xs text-label-xs text-primary font-bold">Terpilih Aktif</span>
+</td>
+</tr>
+<tr>
+<td class="p-3 font-bold text-on-surface">Gigi 38</td>
+<td class="p-3">Vertikal</td>
+<td class="p-3">Impaksi Parsial Vertikal Molar Ketiga</td>
+<td class="p-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 font-label-xs text-label-xs font-semibold">
+                      Rencana Odontektomi Elektif
+                    </span>
+</td>
+<td class="p-3 text-right">
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm font-semibold" type="button">Rencana Jadwal</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column (4 cols): Billing & Real-time Action Summary Panel -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Live Treatment & Cost Summary Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md sticky top-20">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[22px] text-primary">payments</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Tindakan &amp; Biaya</h3>
+</div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-label-xs text-label-xs font-bold">
+              Belum Lunas
+            </span>
+</div>
+<!-- Tindakan Medis List -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-xs text-label-xs text-outline font-semibold uppercase tracking-wider">Tindakan Klinis Dilakukan</span>
+<div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl">
+<!-- Item 1: Penambalan Komposit -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Penambalan Resin Komposit</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Gigi 46 • Oklusal Komposit Ringan</span>
+</div>
+<span class="font-mono font-semibold text-on-surface text-body-md whitespace-nowrap">Rp350.000</span>
+</div>
+<!-- Item 2: Scaling -->
+<div class="flex items-start justify-between gap-2 pt-2">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Pembersihan Karang Gigi</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Scaling Rahang Atas &amp; Rahang Bawah</span>
+</div>
+<span class="font-mono font-semibold text-on-surface text-body-md whitespace-nowrap">Rp250.000</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-label-xs text-label-xs text-outline font-semibold">Subtotal Tindakan</span>
+<span class="font-mono font-bold text-on-surface text-body-md">Rp600.000</span>
+</div>
+</div>
+</div>
+<!-- Obat & Peresepan List -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-xs text-label-xs text-outline font-semibold uppercase tracking-wider">Perbekalan Farmasi &amp; Obat</span>
+<div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Paket Analgesik &amp; Kumur</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Asam Mefenamat 500mg (10 tab) + Chlorhexidine 0.2%</span>
+</div>
+<span class="font-mono font-semibold text-on-surface text-body-md whitespace-nowrap">Rp85.000</span>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-label-xs text-label-xs text-outline font-semibold">Subtotal Obat</span>
+<span class="font-mono font-bold text-on-surface text-body-md">Rp85.000</span>
+</div>
+</div>
+</div>
+<!-- Total Calculation (Notice: Zero Consultation Fee) -->
+<div class="rounded-xl p-space-md bg-secondary-fixed/40 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Tarif Konsultasi Gigi</span>
+<span class="font-mono font-medium text-primary">Rp0 (Bebas Biaya)</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Total Tindakan &amp; Obat</span>
+<span class="font-mono">Rp685.000</span>
+</div>
+<div class="flex items-center justify-between pt-2 text-on-surface">
+<span class="font-headline-sm text-headline-sm font-bold">TOTAL TAGIHAN</span>
+<span class="font-headline-lg text-headline-lg font-mono font-extrabold text-primary">Rp685.000</span>
+</div>
+<div class="pt-1 flex items-center justify-between font-label-xs text-label-xs text-on-surface-variant">
+<span>Ditanggung BPJS / Iur Biaya:</span>
+<span class="font-semibold text-on-surface">Klaim BPJS Sedang Diproses</span>
+</div>
+</div>
+<!-- Main Actions in Sidebar -->
+<div class="flex flex-col gap-2 pt-space-xs">
+<button class="w-full py-3 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-2 shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">task_alt</span>
+<span>Simpan Pemeriksaan Kunjungan</span>
+</button>
+<button class="w-full py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center gap-2 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+<span>Terbitkan Tagihan &amp; Kasir</span>
+</button>
+<button class="w-full py-2.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-2 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">picture_as_pdf</span>
+<span>Cetak Rekam Odontogram (PDF)</span>
+</button>
+</div>
+<!-- Operator Info Note -->
+<div class="p-3 bg-surface rounded-lg flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div class="flex flex-col min-w-0 text-on-surface-variant font-label-xs text-label-xs">
+<span class="font-semibold text-on-surface">Tanda Tangan Elektronik Valid</span>
+<span>drg. Senja Puspa, Sp.KG (SIP: 503/442/SIP-D/2024)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

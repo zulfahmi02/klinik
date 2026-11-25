@@ -7,18 +7,20 @@
             <h3 class="fw-bold mb-1"><i class="fa-solid fa-file-waveform text-primary me-2"></i>Laporan Kunjungan Pasien</h3>
             <p class="text-muted mb-0">Rekapitulasi data kunjungan poliklinik dan riwayat pelayanan</p>
         </div>
-        <button onclick="window.print()" class="btn btn-primary px-3 shadow-sm fw-semibold">
-            <i class="fa-solid fa-print me-1"></i> Cetak Laporan
-        </button>
+        <a href="{{ route('reports.visits.pdf', request()->except('page')) }}" class="btn btn-primary px-3 shadow-sm fw-semibold">Unduh PDF rekap</a>
     </div>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">@foreach ($errors->all() as $error)<div>{{ $error }}</div>@endforeach</div>
+    @endif
+    <p class="text-muted">Tanggal kosong menampilkan seluruh riwayat. Laporan ini hanya untuk melihat data; pemeriksaan diisi melalui Kunjungan / Pemeriksaan.</p>
     <!-- Filter Card -->
     <div class="card border-0 shadow-sm rounded-3 mb-4 d-print-none">
         <div class="card-body p-4">
             <form method="GET" action="{{ route('reports.visits') }}" class="row g-3">
                 <div class="col-12">
                     <label for="search" class="form-label small fw-semibold text-secondary">Cari kunjungan</label>
-                    <input id="search" name="search" type="search" class="form-control" maxlength="255" value="{{ $search }}" placeholder="Nama pasien, No. RM, NIK, No. HP, dokter, antrean, keluhan, atau diagnosa">
+                    <input id="search" name="search" type="search" class="form-control" maxlength="255" value="{{ $search }}" placeholder="Nama pasien, No. RM, NIK, No. HP, dokter, keluhan, atau diagnosa">
                     <div class="form-text">Pencarian mengikuti periode dan filter yang dipilih.</div>
                 </div>
                 <div class="col-md-3">
@@ -28,16 +30,6 @@
                 <div class="col-md-3">
                     <label class="form-label small fw-semibold text-secondary">Tanggal Sampai</label>
                     <input type="date" class="form-control" name="end_date" value="{{ $endDate }}">
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label small fw-semibold text-secondary">Poliklinik</label>
-                    <select class="form-select" name="poli">
-                        <option value="">-- Semua Poli --</option>
-                        <option value="Poli Umum" {{ $poli === 'Poli Umum' ? 'selected' : '' }}>Poli Umum</option>
-                        <option value="Poli Gigi" {{ $poli === 'Poli Gigi' ? 'selected' : '' }}>Poli Gigi</option>
-                        <option value="KIA / KB" {{ $poli === 'KIA / KB' ? 'selected' : '' }}>KIA / KB</option>
-                        <option value="Poli Anak" {{ $poli === 'Poli Anak' ? 'selected' : '' }}>Poli Anak</option>
-                    </select>
                 </div>
                 <div class="col-md-2">
                     <label class="form-label small fw-semibold text-secondary">Dokter</label>
@@ -101,7 +93,7 @@
     <div class="d-none d-print-block text-center mb-4 pb-2 border-bottom">
         <h3 class="fw-bold mb-1">KLINIK PRATAMA MEDIKA</h3>
         <p class="mb-1 text-muted">LAPORAN KUNJUNGAN PASIEN</p>
-        <small class="text-muted">Periode: {{ date('d/m/Y', strtotime($startDate)) }} s/d {{ date('d/m/Y', strtotime($endDate)) }}</small>
+        <small class="text-muted">Periode: {{ $startDate ?: 'Awal data' }} s/d {{ $endDate ?: 'Seluruh tanggal' }}</small>
     </div>
 
     <!-- Data Table -->
@@ -120,13 +112,14 @@
                             <th>Keluhan & Diagnosa</th>
                             <th>Penjamin</th>
                             <th>Status</th>
-                            <th>Total Tagihan</th>
+                            <th>Total Tercatat</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($visits as $idx => $v)
                             <tr>
-                                <td class="text-center">{{ $idx + 1 }}</td>
+                                <td class="text-center">{{ ($visits->firstItem() ?? 1) + $idx }}</td>
                                 <td>
                                     <strong>{{ $v->tanggal_kunjungan->format('d/m/Y') }}</strong>
                                     <div class="small text-muted">{{ $v->jam_kunjungan ?? '-' }}</div>
@@ -148,7 +141,7 @@
                                     @elseif ($v->status === 'Batal')
                                         <span class="badge bg-danger">Batal</span>
                                     @else
-                                        <span class="badge bg-warning text-dark">Menunggu</span>
+                                        <span class="badge bg-warning text-dark">Terdaftar</span>
                                     @endif
                                 </td>
                                 <td class="text-end fw-semibold">
@@ -157,10 +150,17 @@
                                         {{ $v->status_pembayaran }}
                                     </div>
                                 </td>
+                                <td>
+                                    <a href="{{ route('reports.examinations.show', $v) }}" class="btn btn-sm btn-outline-info">Detail pemeriksaan</a>
+                                    <a href="{{ route('reports.history.show', $v->patient) }}" class="btn btn-sm btn-outline-primary">Riwayat pemeriksaan</a>
+                                    @if ($v->poli === 'Poli Gigi')
+                                        <a href="{{ route('reports.odontogram.show', $v) }}" class="btn btn-sm btn-outline-secondary">Odontogram kunjungan</a>
+                                    @endif
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="10" class="text-center py-5 text-muted">
+                                <td colspan="11" class="text-center py-5 text-muted">
                                     Tidak ada data kunjungan pada rentang tanggal yang dipilih.
                                 </td>
                             </tr>
@@ -170,5 +170,6 @@
             </div>
         </div>
     </div>
+    <div class="mt-3 d-print-none">{{ $visits->links() }}</div>
 </div>
 @endsection

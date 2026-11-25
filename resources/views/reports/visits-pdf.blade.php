@@ -1,0 +1,10 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Rekap kunjungan klinik</title><style>@page{margin:25px}body{font-family:DejaVu Sans,sans-serif;font-size:9px;color:#222}h1{font-size:18px}table{width:100%;border-collapse:collapse}thead{display:table-header-group}tr{page-break-inside:avoid}td,th{border:1px solid #aaa;padding:5px;word-wrap:break-word}th{background:#eee}.right{text-align:right}</style></head><body>
+<h1>Laporan Klinik — Rekap seluruh kunjungan</h1>
+<p>Periode: {{ $startDate ?: 'Awal data' }} s/d {{ $endDate ?: 'Seluruh tanggal' }} | Total kunjungan: {{ $totalVisits }} | Selesai: {{ $totalSelesai }}</p>
+<p>Pencarian: {{ $search ?: 'Semua' }} | Poli: {{ $poli ?: 'Semua riwayat' }} | Dokter: {{ $doctors->firstWhere('id', $doctorId)?->nama ?? 'Semua' }} | Penjamin: {{ $penjamin ?: 'Semua' }} | Status: {{ $status ?: 'Semua' }}</p>
+<table><thead><tr><th>No.</th><th>Tanggal / Jam</th><th>No. RM</th><th>Pasien</th><th>Dokter</th><th>Status</th><th>Tindakan (Rp)</th><th>Obat (Rp)</th><th>Total tindakan + obat (Rp)</th><th>Pembayaran</th></tr></thead><tbody>
+@forelse($visits as $v)<tr><td>{{ $loop->iteration }}</td><td>{{ $v->tanggal_kunjungan->format('d/m/Y') }} {{ $v->jam_kunjungan }}</td><td>{{ $v->patient?->no_rm }}</td><td>{{ $v->patient?->nama }}</td><td>{{ $v->doctor?->nama ?? '-' }}</td><td>{{ $v->status }}</td><td class="right">{{ number_format($v->biaya_tindakan,0,',','.') }}</td><td class="right">{{ number_format($v->biaya_obat,0,',','.') }}</td><td class="right">{{ number_format($v->biaya_tindakan + $v->biaya_obat,0,',','.') }}</td><td>{{ $v->status_pembayaran }} / {{ $v->metode_pembayaran ?: '-' }}</td></tr>
+@empty<tr><td colspan="10">Tidak ada kunjungan sesuai filter.</td></tr>@endforelse
+</tbody></table><p><strong>Total tindakan + obat: Rp {{ number_format($visits->sum(fn($v) => $v->biaya_tindakan + $v->biaya_obat),0,',','.') }}</strong></p>
+<p>Rekap biaya hanya tindakan dan obat; data transaksi lama tidak diubah.</p>
+</body></html>

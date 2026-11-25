@@ -55,7 +55,6 @@
         .registration-notice { background: #f2f6f2; border-radius: 12px; padding: 15px 17px; color: var(--muted); font-size: 12px; line-height: 1.7; margin: 26px 0 20px; }
         .btn-primary { --bs-btn-bg: #087f75; --bs-btn-border-color: #087f75; --bs-btn-hover-bg: #06675e; --bs-btn-hover-border-color: #06675e; --bs-btn-active-bg: #06594f; --bs-btn-active-border-color: #06594f; border-radius: 11px; padding: 13px 20px; font-size: 14px; font-weight: 650; }
         .submit-note { text-align: center; margin: 12px 0 0; color: var(--muted); font-size: 11px; }
-        .queue-number { font-size: clamp(3rem, 10vw, 5rem); font-weight: 800; color: var(--teal); }
         .receipt-card { max-width: 700px; margin: 20px auto; }
         .success-mark { width: 64px; height: 64px; display: grid; place-items: center; border-radius: 50%; background: #e7f5ed; color: var(--teal); font-size: 28px; margin: 0 auto 20px; }
         .public-footer { border-top: 1px solid var(--line); margin-top: 20px; padding: 22px 0; font-size: 11px; color: var(--muted); }
@@ -63,6 +62,7 @@
         @media (max-width: 767px) { .registration-grid { grid-template-columns: 1fr; } .registration-guide { position: static; } .guide-panel { display: none; } .returning-patient { margin: 0; padding: 16px 20px; } .registration-hero { margin-bottom: 22px; } .registration-hero h1 { letter-spacing: -1px; } .form-intro { flex-wrap: wrap; gap: 10px; } .form-body, .form-intro { padding: 22px; } .header-note { font-size: 10px; max-width: 110px; text-align: right; } .brand { font-size: 16px; } }
         @media print { .no-print { display: none !important; } body { background: white; } .registration-card { box-shadow: none; } }
     </style>
+<link rel="stylesheet" href="{{ asset('css/clinic.css') }}?v={{ filemtime(public_path('css/clinic.css')) }}">
 </head>
 <body>
     <header class="public-header no-print">
@@ -73,5 +73,6 @@
     </header>
     <main class="container registration-shell py-4 py-md-5">@yield('content')</main>
     <footer class="public-footer no-print"><div class="container registration-shell d-flex flex-wrap justify-content-between gap-2"><span>&copy; {{ now()->year }} {{ config('app.name', 'Klinik') }}</span><span>Pendaftaran mandiri · Pelayanan dimulai dari sini</span></div></footer>
+<script src="{{ asset('js/clinic.js') }}?v={{ filemtime(public_path('js/clinic.js')) }}"></script>
 </body>
 </html>

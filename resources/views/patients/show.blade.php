@@ -2,10 +2,11 @@
 
 @section('content')
 <div class="container">
-    <h2>Detail Pasien</h2>
+    <div class="clinical-banner"><div class="patient-avatar">{{ mb_substr($patient->nama, 0, 1) }}</div><div><h1 class="h4 mb-1">{{ $patient->nama }}</h1><span class="clinical-meta">{{ $patient->no_rm }} · Identitas & riwayat pasien</span></div><a class="btn btn-primary ms-auto" href="{{ route('medical_records.show', $patient) }}">Riwayat Pemeriksaan</a></div>
+    @if($patient->alergi)<div class="clinical-note"><strong>Alergi:</strong> {{ $patient->alergi }}</div>@endif
     <div class="card">
         <div class="card-body">
-            <table class="table">
+            <table class="table patient-details">
                 <tr><th>No. RM</th><td>{{ $patient->no_rm }}</td></tr>
                 <tr><th>Nama</th><td>{{ $patient->nama }}</td></tr>
                 <tr><th>NIK</th><td>{{ $patient->nik ?? '-' }}</td></tr>
@@ -13,6 +14,7 @@
                 <tr><th>Tanggal Lahir</th><td>{{ $patient->tanggal_lahir?->format('d-m-Y') ?? '-' }}</td></tr>
                 <tr><th>Alamat</th><td>{{ $patient->alamat ?? '-' }}</td></tr>
                 <tr><th>No. HP</th><td>{{ $patient->no_hp ?? '-' }}</td></tr>
+                <tr><th>Nomor penjamin</th><td>{{ $patient->no_penjamin ?? '-' }}</td></tr>
                 <tr><th>Penjamin</th><td>{{ $patient->penjamin ?? '-' }}</td></tr>
                 <tr><th>Alergi</th><td>{{ $patient->alergi ?? '-' }}</td></tr>
             </table>

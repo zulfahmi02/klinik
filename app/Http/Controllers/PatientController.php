@@ -7,11 +7,18 @@ use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $patients = Patient::latest()->paginate(10);
+        $request->validate(['search' => 'nullable|string|max:255']);
+        $search = trim((string) $request->input('search', ''));
+        $patients = Patient::when($search !== '', function ($query) use ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%")->orWhere('no_rm', 'like', "%{$search}%")
+                    ->orWhere('nik', 'like', "%{$search}%")->orWhere('no_hp', 'like', "%{$search}%");
+            });
+        })->latest()->paginate(15)->withQueryString();
 
-        return view('patients.index', compact('patients'));
+        return view('patients.index', compact('patients', 'search'));
     }
 
     public function show(Patient $patient)

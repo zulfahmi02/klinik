@@ -1,0 +1,15 @@
+{
+  "scope": "Local Laravel UI completion; no deployment or production data writes",
+  "implemented": [
+    "Direct filtered PDF downloads: finance, treatments, doctors, chart source data",
+    "Inclusive end-date filters and period validation for finance/treatments/doctors",
+    "Primary teeth alongside permanent teeth; preserved visit snapshots and PDF/history rendering",
+    "Updated dental-only report wording and mobile visit identity tables"
+  ],
+  "verification": {
+    "full_suite": "73 tests passed, 841 assertions",
+    "pdf": "Real Dompdf output extracted with pdftotext; filters, amounts, clinical content, no navigation checked; finance PDF visually inspected",
+    "browser": "Rendered synthetic HTML snapshots in headless Chrome at 390px; navigation open/Escape close, permanent/primary tooth selection, editor values and totals; page overflow checked and visit detail fixed",
+    "limitations": "Browser checks use rendered snapshots; server writes and authorization verified separately through HTTP feature tests. No claim of exhaustive manual end-to-end testing."
+  }
+}

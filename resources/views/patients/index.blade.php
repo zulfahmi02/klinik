@@ -10,9 +10,10 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+    <form method="GET" class="card p-3 mb-4"><label for="patient-query" class="form-label">Cari pasien</label><div class="d-flex gap-2"><input id="patient-query" name="search" class="form-control" value="{{ $search }}" placeholder="Nama, nomor RM, NIK, atau nomor HP"><button class="btn btn-primary">Cari</button><a class="btn btn-outline-secondary" href="{{ route('patients.index') }}">Reset</a></div></form>
     <div class="card">
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <div class="table-responsive"><table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>No. RM</th>
@@ -49,7 +50,7 @@
                         </tr>
                     @endforelse
                 </tbody>
-            </table>
+            </table></div>
 
             {{ $patients->links() }}
         </div>

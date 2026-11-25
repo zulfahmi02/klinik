@@ -239,6 +239,7 @@
             margin-top: 24px;
         }
     </style>
+<link rel="stylesheet" href="{{ asset('css/clinic.css') }}?v={{ filemtime(public_path('css/clinic.css')) }}">
 </head>
 <body>
     <div class="auth-wrapper">

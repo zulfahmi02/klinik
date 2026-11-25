@@ -1,0 +1,153 @@
+{
+  "scope": "Root application only; nested klinik/ unchanged",
+  "committed": false,
+  "tests": {
+    "baseline": {
+      "passed": 35,
+      "assertions": 160
+    },
+    "final": {
+      "passed": 45,
+      "assertions": 356
+    },
+    "database": "SQLite :memory:, forced phpunit environment plus pre-RefreshDatabase connection guard"
+  },
+  "checks": {
+    "full_suite": "passed",
+    "pint": "php vendor/bin/pint --dirty (direct executable lacked permission)",
+    "npm_build": "passed",
+    "pdf": "application/pdf attachment, %PDF- signature and pdftotext content assertions passed",
+    "syntax": "passed; final check repeated after formatting",
+    "diff_check": "passed after trimming two whitespace-only lines"
+  },
+  "implemented": [
+    "Only Poli Gigi offered/validated for new registrations and report clinic filter; historical clinic records remain accessible and unchanged.",
+    "New visits use hidden VIS-UUID references in required legacy no_antrean column; no new queue counters or visible numbering.",
+    "Nomor penjamin labels, help, validation errors and patient/visit identity displays.",
+    "New and updated visit totals use treatments plus medicines; historical records are not bulk rewritten; retained treatment prices remain unchanged.",
+    "Doctor consultation tariff controls and fee presentation removed; unrelated charts retained.",
+    "Authenticated visit odontogram, explicit per-visit snapshots, latest patient reference separately labelled, healthy teeth explicitly stored, valid FDI/condition validation.",
+    "Legacy patient odontogram URLs route to latest dental visit workflow; edits to old visits do not overwrite patient latest state.",
+    "Visit report history and odontogram action links use patient and visit IDs respectively, with eager loaded relations.",
+    "Authenticated print resume and genuine downloadable PDF share a table odontogram partial; PDF excludes queue and consultation fee and disables remote/PHP/JavaScript rendering."
+  ],
+  "red_green_evidence": [
+    {
+      "slice": "dentistry",
+      "red": "Registration HTML still contained Poli Umum",
+      "green": "2 passed, 43 assertions (dentistry + revised search)"
+    },
+    {
+      "slice": "queue removal",
+      "red": "Visible antrean and A-001 reference",
+      "green": "4 passed, 71 assertions (including search)"
+    },
+    {
+      "slice": "insurer wording",
+      "red": "Nomor penjamin absent",
+      "green": "1 passed, 8 assertions"
+    },
+    {
+      "slice": "fees",
+      "red": "New total was 50000; doctor still required consultation tariff",
+      "green": "2 passed, 39 assertions"
+    },
+    {
+      "slice": "chart removal",
+      "red": "poliChart still rendered",
+      "green": "1 passed, 16 assertions"
+    },
+    {
+      "slice": "visit odontogram",
+      "red": "Visit odontogram endpoint returned 404",
+      "green": "1 passed, 26 assertions"
+    },
+    {
+      "slice": "report actions",
+      "red": "Patient history URL missing from report",
+      "green": "1 passed, 8 assertions"
+    },
+    {
+      "slice": "print",
+      "red": "Print route returned 404",
+      "green": "1 passed, 19 assertions"
+    },
+    {
+      "slice": "PDF",
+      "red": "PDF route returned 404",
+      "green": "1 passed, 30 assertions including signature and extracted text"
+    },
+    {
+      "slice": "billing edit safety",
+      "red": "Invalid treatment returned 302 instead of 422",
+      "green": "2 passed, 36 assertions including billing regression"
+    },
+    {
+      "slice": "legacy odontogram routes",
+      "red": "Old patient page returned 200 rather than visit redirect",
+      "green": "1 passed, 10 assertions"
+    }
+  ],
+  "additional_verification": "Additive migration preserves existing visit/odontogram attributes; pending migration leaves read views available and rejects snapshot writes with 503.",
+  "migration": {
+    "file": "database/migrations/2026_10_08_000001_create_visit_odontogram_snapshots_table.php",
+    "applied_to_live_database": true,
+    "tested_on_sqlite": true,
+    "required_command": "php artisan migrate --path=database/migrations/2026_10_08_000001_create_visit_odontogram_snapshots_table.php"
+  },
+  "limitations": [
+    "Snapshot migration applied by parent; migration status verified Ran. No existing records rewritten.",
+    "No historical snapshots fabricated from patient latest data. Legacy visit-linked entries remain available; unrecorded teeth are labelled Belum dicatat.",
+    "Identity fields remain sourced from the existing patient record; snapshots cover odontogram only.",
+    "Existing medicine data is an aggregate charge plus doctor prescription text; no medicine inventory/line-item model was introduced.",
+    "PDF extraction regression requires the installed pdftotext executable.",
+    "No live patient/payment writes or browser-driven patient modifications were performed."
+  ],
+  "dependency_provenance": "Renderer absent initially. composer.json/composer.lock changed externally during this task to add barryvdh/laravel-dompdf ^3.1; installed Dompdf was then detected and used. This agent ran no Composer install/require/update command.",
+  "files_changed_by_agent": [
+    "app/Http/Controllers/DashboardController.php",
+    "app/Http/Controllers/DoctorController.php",
+    "app/Http/Controllers/OdontogramController.php",
+    "app/Http/Controllers/PublicRegistrationController.php",
+    "app/Http/Controllers/ReportController.php",
+    "app/Http/Controllers/VisitController.php",
+    "app/Http/Controllers/VisitOdontogramController.php",
+    "app/Services/RegistrationNumber.php",
+    "app/Services/VisitOdontogram.php",
+    "database/migrations/2026_10_08_000001_create_visit_odontogram_snapshots_table.php",
+    "phpunit.xml",
+    "resources/views/dashboard.blade.php",
+    "resources/views/doctors/create.blade.php",
+    "resources/views/doctors/show.blade.php",
+    "resources/views/layouts/app.blade.php",
+    "resources/views/layouts/public.blade.php",
+    "resources/views/medical_records/show.blade.php",
+    "resources/views/odontogram/partials/table.blade.php",
+    "resources/views/odontogram/partials/visit.blade.php",
+    "resources/views/patients/show.blade.php",
+    "resources/views/registration/create.blade.php",
+    "resources/views/registration/success.blade.php",
+    "resources/views/reports/charts.blade.php",
+    "resources/views/reports/doctors.blade.php",
+    "resources/views/reports/finance.blade.php",
+    "resources/views/reports/visits.blade.php",
+    "resources/views/visits/create.blade.php",
+    "resources/views/visits/edit.blade.php",
+    "resources/views/visits/index.blade.php",
+    "resources/views/visits/odontogram.blade.php",
+    "resources/views/visits/print.blade.php",
+    "resources/views/visits/show.blade.php",
+    "routes/web.php",
+    "tests/Feature/ClinicModulesTest.php",
+    "tests/Feature/ClinicRevisionsTest.php",
+    "tests/Feature/PublicRegistrationTest.php",
+    "tests/Pest.php",
+    "tests/Support/ClinicFixtures.php",
+    "tests/TestCase.php",
+    "verification/clinic-revisions.json"
+  ],
+  "externally_changed_files": [
+    "composer.json",
+    "composer.lock"
+  ]
+}

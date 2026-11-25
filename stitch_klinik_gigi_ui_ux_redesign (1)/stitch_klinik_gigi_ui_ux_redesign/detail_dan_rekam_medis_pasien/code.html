@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container":"#eceef0","on-tertiary-fixed":"#001d31","on-secondary":"#ffffff","inverse-primary":"#6bd8cb","on-secondary-fixed":"#00201c","error":"#ba1a1a","on-error-container":"#93000a","tertiary":"#006194","inverse-surface":"#2d3133","error-container":"#ffdad6","tertiary-fixed-dim":"#93ccff","surface":"#f7f9fb","surface-container-low":"#f2f4f6","tertiary-container":"#007bb9","on-primary-fixed":"#00201d","surface-container-high":"#e6e8ea","surface-dim":"#d8dadc","primary-fixed-dim":"#6bd8cb","primary":"#00685f","outline":"#6d7a77","primary-fixed":"#89f5e7","on-surface-variant":"#3d4947","surface-container-lowest":"#ffffff","on-primary-container":"#f4fffc","on-primary":"#ffffff","surface-container-highest":"#e0e3e5","secondary-fixed-dim":"#a2d0c6","on-tertiary-container":"#fdfcff","on-background":"#191c1e","secondary-fixed":"#bdece2","surface-bright":"#f7f9fb","on-secondary-fixed-variant":"#224e47","surface-tint":"#006a61","secondary-container":"#bdece2","on-error":"#ffffff","on-primary-fixed-variant":"#005049","on-secondary-container":"#416c65","inverse-on-surface":"#eff1f3","on-tertiary-fixed-variant":"#004b73","on-tertiary":"#ffffff","outline-variant":"#bcc9c6","secondary":"#3b665f","on-surface":"#191c1e","background":"#f7f9fb","primary-container":"#008378","tertiary-fixed":"#cce5ff","surface-variant":"#e0e3e5"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","space-lg":"1.5rem","margin":"2rem","space-xl":"2rem","gutter":"1.5rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter-mobile":"0.75rem"},"fontFamily":{"body-md":["Inter"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"body-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"label-xs":["Plus Jakarta Sans"],"body-lg":["Inter"],"headline-lg-mobile":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},"fontSize":{"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.015em","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"display-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"display-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-xs":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg-mobile":["22px",{"lineHeight":"30px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm bg-surface-container-lowest"><img alt="Logo Klinik Gigi" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xrb8dGMzOFLb9pvCWDXMkW0flj6_o9RmQESE4QozFa2z1lgH8XiEjz_3qA5jO7qjnsEIYAVN622--AFAbk7OoyB_V51POXM29zS6zIBIMEH0tqZRmUYK2x4nyo9q6tdvjW0M7PBiw2mkwJ96atuXpRrnj2akXJZY_gz0J9NNY7nWECOfAfsx9uWupcKPvh5Zv1ncrdo3yKEJSZ6Kc5h0PD_kODLUhPGAKb9EdwQS_a"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-primary tracking-tight truncate leading-tight">Klinik Gigi</span><span class="font-label-xs text-label-xs text-on-surface-variant truncate">Sistem Informasi Pelayanan Gigi</span></div></div><div class="px-space-md py-space-sm"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-md text-label-md">Dashboard</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Pelayanan</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="data-pasien" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-label-md text-label-md">Data Pasien</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="kunjungan" href="#"><span class="material-symbols-outlined text-[20px]">event_note</span><span class="font-label-md text-label-md">Kunjungan</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Pengelolaan Dokter</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="data-dokter" href="#"><span class="material-symbols-outlined text-[20px]">stethoscope</span><span class="font-label-md text-label-md">Data Dokter</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="tambah-dokter" href="#"><span class="material-symbols-outlined text-[20px]">person_add</span><span class="font-label-md text-label-md">Tambah Dokter</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Pelaporan</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ringkasan-laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-label-md text-label-md">Ringkasan Laporan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-kunjungan" href="#"><span class="material-symbols-outlined text-[20px]">description</span><span class="font-label-md text-label-md">Laporan Kunjungan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-tindakan" href="#"><span class="material-symbols-outlined text-[20px]">vital_signs</span><span class="font-label-md text-label-md">Laporan Tindakan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-keuangan" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-label-md text-label-md">Laporan Keuangan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-dokter" href="#"><span class="material-symbols-outlined text-[20px]">award_star</span><span class="font-label-md text-label-md">Laporan Dokter</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Akun</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="profil" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-label-md text-label-md">Profil</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ganti-password" href="#"><span class="material-symbols-outlined text-[20px]">key</span><span class="font-label-md text-label-md">Ganti Password</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="keluar" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-label-md text-label-md">Keluar</span></a></nav></div></div><div class="p-space-md m-space-sm bg-surface-container-low rounded-xl flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><div class="relative flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlUxh0NzWa5rJBydaEw1OUrsYTphIf2GqD5MUex0QOlVGwNaFRJo5F1rBg_pWSgi49iAdkv2S0xNsMY5u3yLpUHi9Rjq5WW8TPAwaX5EYOV3i8O-UeOsXt6qw2KYTLHt5aCeRroNwwRIsCX25o1BBLuBhowUpcEa_e3Tjvp6-rEE8KU38nfOIHwgs85hQMvveI7kuu2WGYUKL4ESOQ5euNyRuxGjaDjGAo0sLkAQ0E"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-primary rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex flex-col min-w-0"><span class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">drg. Senja Puspa, Sp.KG</span><span class="font-label-xs text-label-xs text-on-surface-variant truncate">Staf Pelayanan &amp; Dokter</span></div></div><span class="inline-flex items-center px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-xs text-label-xs flex-shrink-0">Online</span></div></aside><div class="pl-72 flex flex-col min-h-screen"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[18px]">home</span><span>/</span><span class="text-primary font-label-sm text-label-sm">Poli Gigi</span></div><span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-xs text-label-xs"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Khusus Poli Gigi - Layanan Aktif</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low px-space-sm py-1 rounded-lg"><span class="material-symbols-outlined text-[18px] text-primary">calendar_today</span><span>03 November 2026</span></div><button class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface transition-all font-label-sm text-label-sm shadow-[0_1px_8px_rgba(0,0,0,0.04)]" type="button"><span class="material-symbols-outlined text-[18px] text-primary">print</span><span>Cetak Dokumen</span></button><button class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface transition-all font-label-sm text-label-sm shadow-[0_1px_8px_rgba(0,0,0,0.04)]" type="button"><span class="material-symbols-outlined text-[18px] text-tertiary">help_outline</span><span>Panduan</span></button><div class="flex items-center pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlUxh0NzWa5rJBydaEw1OUrsYTphIf2GqD5MUex0QOlVGwNaFRJo5F1rBg_pWSgi49iAdkv2S0xNsMY5u3yLpUHi9Rjq5WW8TPAwaX5EYOV3i8O-UeOsXt6qw2KYTLHt5aCeRroNwwRIsCX25o1BBLuBhowUpcEa_e3Tjvp6-rEE8KU38nfOIHwgs85hQMvveI7kuu2WGYUKL4ESOQ5euNyRuxGjaDjGAo0sLkAQ0E"/></div></div></header><main class="relative pt-16 bg-surface min-h-[calc(100vh-4rem)] w-full"><div class="flex flex-col w-full">
+<div class="p-space-lg lg:p-space-xl flex flex-col gap-space-lg max-w-[1440px] mx-auto w-full">
+<!-- Top Action & Navigation Row -->
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<a class="inline-flex items-center gap-space-xs text-primary font-label-md text-label-md hover:text-primary-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+<span>Kembali ke Daftar Pasien</span>
+</a>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm bg-surface-container-low px-space-md py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+<span>Terakhir diperbarui: 03 November 2026, 09:42 WIB</span>
+</div>
+</div>
+<!-- Alert Banner: Kontraindikasi Alergi Berat -->
+<div class="rounded-xl bg-error-container text-on-error-container p-space-md shadow-sm flex items-start gap-space-md relative overflow-hidden">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-error text-on-error flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[24px]">emergency</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 pr-space-md">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight text-error">PERINGATAN KONTRAINDIKASI ALERGI BERAT (RISIKO ANAFILAKSIS)</span>
+<span class="px-2 py-0.5 rounded-full bg-error text-on-error font-label-xs text-label-xs uppercase font-bold tracking-wider">Kritikal Medis</span>
+</div>
+<p class="font-body-md text-body-md text-on-error-container mt-0.5 leading-relaxed">
+          Pasien memiliki riwayat alergi berat antibiotik golongan penisilin (<span class="font-bold underline">Amoxicillin</span> / Ampicillin). 
+          <strong>DILARANG MEMBERIKAN RESEP TERKAIT</strong>. Rekomendasi antibiotik pengganti: <em>Clindamycin 300mg</em> atau <em>Azithromycin / Erythromycin (Macrolide)</em>.
+        </p>
+</div>
+<button class="flex-shrink-0 text-on-error-container hover:text-error transition-colors p-1" title="Tutup Notifikasi" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Profil Pasien Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg">
+<!-- Patient Identity Primary -->
+<div class="flex items-start sm:items-center gap-space-md">
+<div class="w-16 h-16 rounded-2xl bg-primary text-on-primary font-headline-lg text-headline-lg flex items-center justify-center font-bold shadow-md flex-shrink-0">
+            SR
+          </div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Siti Rahmawati</h1>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-xs text-label-xs">
+                Pasien Aktif
+              </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-xs text-label-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">badge</span>
+                RM-001089
+              </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 flex flex-wrap items-center gap-x-space-md gap-y-1">
+<span>NIK: <span class="font-semibold text-on-surface">3273205810970002</span></span>
+<span>•</span>
+<span>Bandung, 14 Oktober 1997 (<span class="font-semibold text-on-surface">29 Tahun</span>)</span>
+<span>•</span>
+<span>Perempuan</span>
+</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm self-start lg:self-center">
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">edit</span>
+<span>Edit Data Pasien</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Daftarkan Kunjungan Pasien Ini</span>
+</button>
+</div>
+</div>
+<!-- Detail Grid Metadata -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md pt-space-md bg-surface-container-low/60 rounded-xl p-space-md">
+<!-- Demografi Kontak -->
+<div class="flex flex-col gap-1 min-w-0">
+<span class="font-label-xs text-label-xs text-outline uppercase tracking-wider">Kontak &amp; Alamat</span>
+<div class="flex items-center gap-1.5 text-on-surface font-label-md text-label-md mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-primary">call</span>
+<span>0812-3456-7890</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate" title="Jl. Sukamaju No. 12 RT 04/RW 02, Bandung">
+            Jl. Sukamaju No. 12 RT 04/RW 02, Bandung
+          </span>
+</div>
+<!-- Penjamin Finansial -->
+<div class="flex flex-col gap-1 min-w-0">
+<span class="font-label-xs text-label-xs text-outline uppercase tracking-wider">Penjamin Kesehatan</span>
+<div class="flex items-center gap-1.5 text-on-surface font-label-md text-label-md mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">health_and_safety</span>
+<span>BPJS Kesehatan</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+            Nomor penjamin: <span class="font-semibold text-on-surface">0001892837192</span>
+</span>
+</div>
+<!-- Faskes Asal -->
+<div class="flex flex-col gap-1 min-w-0">
+<span class="font-label-xs text-label-xs text-outline uppercase tracking-wider">Faskes Rujukan / FKTP</span>
+<div class="flex items-center gap-1.5 text-on-surface font-label-md text-label-md mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">local_hospital</span>
+<span class="truncate">Puskesmas Sehat Mandiri</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Status Rujukan Aktif</span>
+</div>
+<!-- Kontak Darurat -->
+<div class="flex flex-col gap-1 min-w-0">
+<span class="font-label-xs text-label-xs text-outline uppercase tracking-wider">Kontak Darurat</span>
+<div class="flex items-center gap-1.5 text-on-surface font-label-md text-label-md mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-error">contact_emergency</span>
+<span class="truncate">Bambang Prakoso (Suami)</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">0813-2211-4433</span>
+</div>
+</div>
+</div>
+<!-- Tab Navigasi Pasien -->
+<div class="flex items-center gap-space-xs bg-surface-container-low p-1.5 rounded-xl w-full sm:w-fit overflow-x-auto">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-lowest text-primary font-headline-sm text-headline-sm shadow-sm flex items-center gap-space-xs flex-shrink-0" type="button">
+<span class="material-symbols-outlined text-[18px]">history_edu</span>
+<span>Riwayat Kunjungan &amp; Pemeriksaan</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-xs text-label-xs ml-1">3</span>
+</button>
+<button class="px-space-md py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md transition-all flex items-center gap-space-xs flex-shrink-0" type="button">
+<span class="material-symbols-outlined text-[18px]">grid_4x4</span>
+<span>Rekap Odontogram Kumulatif</span>
+</button>
+<button class="px-space-md py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md transition-all flex items-center gap-space-xs flex-shrink-0" type="button">
+<span class="material-symbols-outlined text-[18px]">folder_shared</span>
+<span>Dokumen &amp; Berkas Medis</span>
+</button>
+</div>
+<!-- Main Content Grid: Riwayat Kunjungan (Left) & Quick Odontogram Insight (Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column: Summary & Visit Cards (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Summary Stats Strip -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed text-on-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">event_repeat</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Total Kunjungan</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">3 Kali</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">flag</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Kunjungan Pertama</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">14 Feb 2026</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed text-on-secondary-fixed-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">event_available</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Kunjungan Terkini</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">03 Nov 2026</span>
+</div>
+</div>
+</div>
+<!-- Visit Card #3 (Hari Ini - Sedang Berjalan / Aktif) -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Kunjungan #3 — 03 November 2026</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-xs text-label-xs font-semibold">
+                Sedang Diperiksa
+              </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono bg-surface-container-low px-2.5 py-1 rounded-md">
+              KJ-20261103-004
+            </span>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">stethoscope</span>
+<span>Dokter Pemeriksa: <strong class="text-on-surface font-semibold">drg. Senja Puspa, Sp.KG</strong> (Spesialis Konservasi Gigi)</span>
+</div>
+<!-- Clinical Data Body -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md bg-surface-container-low p-space-md rounded-xl">
+<div class="flex flex-col gap-1">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Keluhan Utama &amp; Anamnesis</span>
+<p class="font-body-md text-body-md text-on-surface">
+                Gigi geraham bawah kanan terasa ngilu tajam saat makan manis dan minum dingin sejak 4 hari lalu. Tidak ada pembengkakan gusi.
+              </p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Diagnosis Primer (ICD-10)</span>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-xs text-label-xs font-bold">K02.1</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Caries of dentine (Karies Media Gigi 46)</span>
+</div>
+</div>
+</div>
+<!-- Tindakan & Billing -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Tindakan Medis Dilakukan</span>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">dentistry</span>
+                Penambalan Komposit Resin Nanohibrid Gigi 46 (Oklusal-Distal)
+              </span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">cleaning_services</span>
+                Pembersihan Karang Gigi (Scaling Ringan)
+              </span>
+</div>
+</div>
+<!-- Financial Breakdown (NO KONSULTASI FEE) -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-highest/40 p-space-sm rounded-lg text-body-sm font-body-sm">
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-1">
+<span>Tindakan: <strong class="text-on-surface font-semibold">Rp600.000</strong></span>
+<span>+</span>
+<span>Farmasi/Obat: <strong class="text-on-surface font-semibold">Rp85.000</strong></span>
+<span class="text-outline">|</span>
+<span class="font-bold text-on-surface">Total Tagihan: Rp685.000</span>
+</div>
+<span class="inline-flex items-center gap-1 font-label-xs text-label-xs font-semibold text-secondary">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+              Ditanggung Penuh BPJS Kesehatan
+            </span>
+</div>
+<!-- Actions -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">clinical_notes</span>
+<span>Buka Workspace Pemeriksaan Aktif</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">dentistry</span>
+<span>Lihat Odontogram</span>
+</button>
+</div>
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all" title="Cetak Ringkasan Kunjungan" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">print</span>
+<span>Cetak PDF Kunjungan</span>
+</button>
+</div>
+</div>
+<!-- Visit Card #2 (Selesai - 14 Juli 2026) -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-outline"></span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Kunjungan #2 — 14 Juli 2026</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-xs text-label-xs font-semibold">
+                Selesai
+              </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono bg-surface-container-low px-2.5 py-1 rounded-md">
+              KJ-20260714-012
+            </span>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">stethoscope</span>
+<span>Dokter Pemeriksa: <strong class="text-on-surface font-semibold">drg. Dimas Ananta</strong></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md bg-surface-container-low/70 p-space-md rounded-xl">
+<div class="flex flex-col gap-1">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Keluhan Utama</span>
+<p class="font-body-md text-body-md text-on-surface">
+                Tambalan gigi geraham atas kanan terasa lepas dan tepiannya tajam melukai mukosa pipi bagian dalam.
+              </p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Diagnosis Primer (ICD-10)</span>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">K02.5</span>
+<span class="font-body-md text-body-md text-on-surface">Caries with pulp exposure arrest / Tumpatan Rusak Gigi 16</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Tindakan Medis</span>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">dentistry</span>
+                Tumpatan Komposit Gigi 16 &amp; Polishing Permukaan
+              </span>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low p-space-sm rounded-lg text-body-sm font-body-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-semibold text-on-surface">Total Tagihan: Rp350.000</span>
+<span class="text-outline">•</span>
+<span class="text-secondary font-semibold">Lunas (BPJS Kesehatan)</span>
+</div>
+<span class="text-outline font-label-xs text-label-xs">Tanpa tarif konsultasi</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">description</span>
+<span>Lihat Pemeriksaan</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">dentistry</span>
+<span>Lihat Odontogram (14 Jul 2026)</span>
+</button>
+</div>
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">print</span>
+<span>Cetak PDF Kunjungan</span>
+</button>
+</div>
+</div>
+<!-- Visit Card #1 (Selesai - 14 Februari 2026) -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-outline"></span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Kunjungan #1 — 14 Februari 2026</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-xs text-label-xs font-semibold">
+                Selesai
+              </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono bg-surface-container-low px-2.5 py-1 rounded-md">
+              KJ-20260214-008
+            </span>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">stethoscope</span>
+<span>Dokter Pemeriksa: <strong class="text-on-surface font-semibold">drg. Senja Puspa, Sp.KG</strong></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md bg-surface-container-low/70 p-space-md rounded-xl">
+<div class="flex flex-col gap-1">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Keluhan Utama</span>
+<p class="font-body-md text-body-md text-on-surface">
+                Pemeriksaan rutin berkala, gusi bawah sering berdarah ringan saat menyikat gigi. Terasa bau mulut tidak segar.
+              </p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Diagnosis Primer (ICD-10)</span>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-xs text-label-xs font-bold">K05.1</span>
+<span class="font-body-md text-body-md text-on-surface">Chronic gingivitis (Gingivitis Marginalis Kronis)</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Tindakan Medis</span>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">cleaning_services</span>
+                Scaling Rahang Atas &amp; Rahang Bawah (Supra &amp; Subgingiva)
+              </span>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low p-space-sm rounded-lg text-body-sm font-body-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-semibold text-on-surface">Total Tagihan: Rp250.000</span>
+<span class="text-outline">•</span>
+<span class="text-secondary font-semibold">Lunas (BPJS Kesehatan)</span>
+</div>
+<span class="text-outline font-label-xs text-label-xs">Tanpa tarif konsultasi</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">description</span>
+<span>Lihat Pemeriksaan</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">dentistry</span>
+<span>Lihat Odontogram (14 Feb 2026)</span>
+</button>
+</div>
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">print</span>
+<span>Cetak PDF Kunjungan</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Visual Odontogram Snapshot & Active Dental Conditions (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Quick Visual Odontogram Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Snapshot Odontogram</h2>
+<span class="font-label-xs text-label-xs text-outline">Kondisi Kumulatif Per Kunjungan Terakhir</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-xs text-label-xs font-semibold">
+              Live EDR
+            </span>
+</div>
+<!-- Anatomical Tooth Schematic Vector Map -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col items-center gap-space-md">
+<!-- Rahang Atas (Maxilla) Quadrant 1 & 2 Preview -->
+<div class="w-full flex flex-col items-center gap-1">
+<div class="flex justify-between w-full px-2 text-outline font-label-xs text-label-xs uppercase">
+<span>Q1 (Kanan Atas)</span>
+<span>Q2 (Kiri Atas)</span>
+</div>
+<div class="flex items-center justify-center gap-1.5 w-full py-1">
+<!-- Tooth 17 -->
+<div class="flex flex-col items-center gap-0.5" title="Gigi 17: Sehat">
+<span class="font-label-xs text-label-xs text-outline">17</span>
+<div class="w-7 h-7 bg-surface-container-lowest rounded-md flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 bg-secondary-fixed/50 rounded-sm"></div>
+</div>
+</div>
+<!-- Tooth 16 (Patologis / Tumpatan Komposit) -->
+<div class="flex flex-col items-center gap-0.5" title="Gigi 16: Tumpatan Komposit (14 Jul 2026)">
+<span class="font-label-xs text-label-xs text-primary font-bold">16</span>
+<div class="w-7 h-7 bg-surface-container-lowest rounded-md flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 bg-tertiary text-on-tertiary rounded-sm flex items-center justify-center font-label-xs text-[9px] font-bold">CR</div>
+</div>
+</div>
+<!-- Tooth 11 -->
+<div class="flex flex-col items-center gap-0.5" title="Gigi 11: Sehat">
+<span class="font-label-xs text-label-xs text-outline">11</span>
+<div class="w-7 h-7 bg-surface-container-lowest rounded-md flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 bg-secondary-fixed/50 rounded-sm"></div>
+</div>
+</div>
+<!-- Midline Divider -->
+<div class="w-0.5 h-8 bg-outline-variant mx-1"></div>
+<!-- Tooth 21 -->
+<div class="flex flex-col items-center gap-0.5" title="Gigi 21: Sehat">
+<span class="font-label-xs text-label-xs text-outline">21</span>
+<div class="w-7 h-7 bg-surface-container-lowest rounded-md flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 bg-secondary-fixed/50 rounded-sm"></div>
+</div>
+</div>
+<!-- Tooth 26 -->
+<div class="flex flex-col items-center gap-0.5" title="Gigi 26: Sehat">
+<span class="font-label-xs text-label-xs text-outline">26</span>
+<div class="w-7 h-7 bg-surface-container-lowest rounded-md flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 bg-secondary-fixed/50 rounded-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Horizontal Separator -->
+<div class="w-full flex items-center justify-center gap-2">
+<div class="h-0.5 bg-outline-variant flex-1"></div>
+<span class="font-label-xs text-label-xs text-outline font-mono">OKLUSAL</span>
+<div class="h-0.5 bg-outline-variant flex-1"></div>
+</div>
+<!-- Rahang Bawah (Mandibula) Quadrant 4 & 3 Preview -->
+<div class="w-full flex flex-col items-center gap-1">
+<div class="flex items-center justify-center gap-1.5 w-full py-1">
+<!-- Tooth 47 -->
+<div class="flex flex-col items-center gap-0.5" title="Gigi 47: Sehat">
+<div class="w-7 h-7 bg-surface-container-lowest rounded-md flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 bg-secondary-fixed/50 rounded-sm"></div>
+</div>
+<span class="font-label-xs text-label-xs text-outline">47</span>
+</div>
+<!-- Tooth 46 (Karies Media / Penambalan Hari Ini) -->
+<div class="flex flex-col items-center gap-0.5" title="Gigi 46: Karies Media K02.1 &amp; Ditambal Hari Ini">
+<div class="w-7 h-7 bg-surface-container-lowest rounded-md flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 bg-primary text-on-primary rounded-sm flex items-center justify-center font-label-xs text-[9px] font-bold">TX</div>
+</div>
+<span class="font-label-xs text-label-xs text-error font-bold">46</span>
+</div>
+<!-- Tooth 41 -->
+<div class="flex flex-col items-center gap-0.5" title="Gigi 41: Sehat">
+<div class="w-7 h-7 bg-surface-container-lowest rounded-md flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 bg-secondary-fixed/50 rounded-sm"></div>
+</div>
+<span class="font-label-xs text-label-xs text-outline">41</span>
+</div>
+<!-- Midline Divider -->
+<div class="w-0.5 h-8 bg-outline-variant mx-1"></div>
+<!-- Tooth 31 -->
+<div class="flex flex-col items-center gap-0.5" title="Gigi 31: Sehat">
+<div class="w-7 h-7 bg-surface-container-lowest rounded-md flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 bg-secondary-fixed/50 rounded-sm"></div>
+</div>
+<span class="font-label-xs text-label-xs text-outline">31</span>
+</div>
+<!-- Tooth 36 -->
+<div class="flex flex-col items-center gap-0.5" title="Gigi 36: Sehat">
+<div class="w-7 h-7 bg-surface-container-lowest rounded-md flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 bg-secondary-fixed/50 rounded-sm"></div>
+</div>
+<span class="font-label-xs text-label-xs text-outline">36</span>
+</div>
+</div>
+<div class="flex justify-between w-full px-2 text-outline font-label-xs text-label-xs uppercase">
+<span>Q4 (Kanan Bawah)</span>
+<span>Q3 (Kiri Bawah)</span>
+</div>
+</div>
+</div>
+<!-- Active Dental Diagnostics Key List -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<span class="font-label-xs text-label-xs text-outline uppercase font-semibold">Fokus Gigi Bermasalah</span>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm">
+<span class="w-6 h-6 rounded bg-primary text-on-primary font-bold text-label-xs flex items-center justify-center flex-shrink-0">46</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Gigi 46 (Molar 1 Kanan Bawah)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Karies Media → Ditambal Komposit (03 Nov 2026)</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm">
+<span class="w-6 h-6 rounded bg-tertiary text-on-tertiary font-bold text-label-xs flex items-center justify-center flex-shrink-0">16</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Gigi 16 (Molar 1 Kanan Atas)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tumpatan Komposit Permanen Terawat (14 Jul 2026)</span>
+</div>
+</div>
+</div>
+<!-- Master Odontogram Trigger -->
+<button class="w-full py-2.5 px-space-md rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md flex items-center justify-center gap-space-xs transition-colors mt-space-xs shadow-xs" type="button">
+<span class="material-symbols-outlined text-[20px]">view_in_ar</span>
+<span>Buka Riwayat Visual Odontogram Penuh</span>
+</button>
+</div>
+<!-- Clinical Notes & Follow-up Recommendation -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs text-primary font-headline-sm text-headline-sm font-bold">
+<span class="material-symbols-outlined text-[20px]">task_alt</span>
+<span>Rencana Kontrol Medis</span>
+</div>
+<div class="flex flex-col gap-space-xs text-body-sm font-body-sm text-on-surface-variant">
+<p>
+              Kontrol evaluasi tambalan gigi 46 dijadwalkan kembali dalam <strong>6 bulan</strong> (Mei 2027) bersamaan dengan jadwal scaling rutin.
+            </p>
+<div class="mt-2 p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span>Pengingat SMS / WhatsApp:</span>
+<span class="text-primary font-semibold">Tersinkronisasi</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

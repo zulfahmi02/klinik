@@ -6,8 +6,9 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Treatment;
 use App\Models\Visit;
-use App\Models\VisitTreatment;
 use App\Services\RegistrationNumber;
+use App\Services\VisitOdontogram;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -37,6 +38,16 @@ class VisitController extends Controller
             });
         }
 
+        if ($request->routeIs('visits.list.pdf')) {
+            $visits = $query->get();
+            $renderer = new Dompdf(['isRemoteEnabled' => false, 'isPhpEnabled' => false]);
+            $renderer->loadHtml(view('visits.list-pdf', compact('visits', 'date', 'status', 'search'))->render());
+            $renderer->setPaper('A4', 'landscape');
+            $renderer->render();
+
+            return response($renderer->output(), 200, ['Content-Type' => 'application/pdf', 'Content-Disposition' => 'attachment; filename="daftar-kunjungan.pdf"', 'Cache-Control' => 'no-store, private']);
+        }
+
         $visits = $query->paginate(15)->withQueryString();
 
         // Summary counts for today
@@ -57,11 +68,7 @@ class VisitController extends Controller
         $patients = Patient::orderBy('nama')->get();
         $doctors = Doctor::where('status', 'Aktif')->orderBy('nama')->get();
 
-        // Generate next queue number
-        $todayCount = Visit::whereDate('tanggal_kunjungan', now()->toDateString())->count();
-        $nextQueue = 'A-'.str_pad($todayCount + 1, 3, '0', STR_PAD_LEFT);
-
-        return view('visits.create', compact('patients', 'doctors', 'nextQueue'));
+        return view('visits.create', compact('patients', 'doctors'));
     }
 
     public function store(Request $request)
@@ -69,15 +76,12 @@ class VisitController extends Controller
         $validated = $request->validate([
             'patient_id' => 'required|exists:patients,id',
             'doctor_id' => 'nullable|exists:doctors,id',
-            'poli' => 'required|string',
+            'poli' => 'required|in:Poli Gigi',
             'penjamin' => 'required|string',
             'keluhan' => 'nullable|string',
         ]);
 
-        $doctor = Doctor::find($request->doctor_id);
-        $biayaKonsultasi = $doctor ? $doctor->tarif_konsultasi : 50000;
-
-        DB::transaction(function () use ($validated, $biayaKonsultasi) {
+        DB::transaction(function () use ($validated) {
             $date = now('Asia/Jakarta');
             Visit::create([
                 'no_antrean' => app(RegistrationNumber::class)->next('visit', $date->toDateString()),
@@ -89,8 +93,8 @@ class VisitController extends Controller
                 'penjamin' => $validated['penjamin'],
                 'keluhan' => $validated['keluhan'] ?? null,
                 'status' => 'Menunggu',
-                'biaya_konsultasi' => $biayaKonsultasi,
-                'total_biaya' => $biayaKonsultasi,
+                'biaya_konsultasi' => 0,
+                'total_biaya' => 0,
                 'status_pembayaran' => 'Belum Lunas',
             ]);
 
@@ -103,7 +107,39 @@ class VisitController extends Controller
     {
         $visit->load(['patient', 'doctor', 'visitTreatments.treatment']);
 
-        return view('visits.show', compact('visit'));
+        return view('visits.show', ['visit' => $visit, ...app(VisitOdontogram::class)->data($visit)]);
+    }
+
+    public function pdf(Visit $visit)
+    {
+        $visit->load(['patient', 'doctor', 'visitTreatments.treatment']);
+        $renderer = new Dompdf([
+            'isRemoteEnabled' => false,
+            'isPhpEnabled' => false,
+            'isJavascriptEnabled' => false,
+            'chroot' => resource_path('views'),
+        ]);
+        $renderer->loadHtml(view('visits.print', [
+            'visit' => $visit,
+            'pdf' => true,
+            ...app(VisitOdontogram::class)->data($visit),
+        ])->render());
+        $renderer->setPaper('A4');
+        $renderer->render();
+
+        return response($renderer->output(), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="kunjungan-'.$visit->id.'.pdf"',
+            'Cache-Control' => 'no-store, private',
+        ]);
+    }
+
+    public function print(Visit $visit)
+    {
+        $visit->load(['patient', 'doctor', 'visitTreatments.treatment']);
+
+        return response()->view('visits.print', ['visit' => $visit, ...app(VisitOdontogram::class)->data($visit)])
+            ->header('Cache-Control', 'no-store, private');
     }
 
     public function edit(Visit $visit)
@@ -112,7 +148,7 @@ class VisitController extends Controller
         $doctors = Doctor::where('status', 'Aktif')->orderBy('nama')->get();
         $treatments = Treatment::orderBy('nama')->get();
 
-        return view('visits.edit', compact('visit', 'doctors', 'treatments'));
+        return view('visits.edit', [...compact('visit', 'doctors', 'treatments'), ...app(VisitOdontogram::class)->data($visit)]);
     }
 
     public function update(Request $request, Visit $visit)
@@ -125,53 +161,51 @@ class VisitController extends Controller
             'suhu_tubuh' => 'nullable|string',
             'berat_badan' => 'nullable|string',
             'catatan_dokter' => 'nullable|string',
-            'biaya_konsultasi' => 'nullable|numeric',
-            'biaya_obat' => 'nullable|numeric',
+            'biaya_obat' => 'nullable|integer|min:0',
+            'treatments_submitted' => 'sometimes|boolean',
+            'treatment_ids' => 'sometimes|array',
+            'treatment_ids.*' => 'integer|distinct|exists:treatments,id',
             'status_pembayaran' => 'required|in:Lunas,Belum Lunas',
             'metode_pembayaran' => 'nullable|string',
         ]);
 
-        $biayaKonsultasi = $validated['biaya_konsultasi'] ?? $visit->biaya_konsultasi;
-        $biayaObat = $validated['biaya_obat'] ?? 0;
+        DB::transaction(function () use ($validated, $visit) {
+            $visit = Visit::whereKey($visit->id)->lockForUpdate()->firstOrFail();
+            $biayaObat = $validated['biaya_obat'] ?? $visit->biaya_obat;
 
-        // Process added treatments if any
-        $biayaTindakan = 0;
-        if ($request->has('treatment_ids') && is_array($request->treatment_ids)) {
-            // Remove existing treatments and replace
-            $visit->visitTreatments()->delete();
-            foreach ($request->treatment_ids as $treatId) {
-                $treatment = Treatment::find($treatId);
-                if ($treatment) {
-                    VisitTreatment::create([
-                        'visit_id' => $visit->id,
+            if (array_key_exists('treatment_ids', $validated) || ($validated['treatments_submitted'] ?? false)) {
+                $ids = $validated['treatment_ids'] ?? [];
+                $visit->visitTreatments()->whereNotIn('treatment_id', $ids)->delete();
+                $retained = $visit->visitTreatments()->pluck('treatment_id')->all();
+                foreach (Treatment::whereIn('id', array_diff($ids, $retained))->get() as $treatment) {
+                    $visit->visitTreatments()->create([
                         'treatment_id' => $treatment->id,
                         'biaya' => $treatment->tarif,
                         'catatan' => $treatment->nama,
                     ]);
-                    $biayaTindakan += $treatment->tarif;
                 }
             }
-        } else {
             $biayaTindakan = $visit->visitTreatments()->sum('biaya');
-        }
 
-        $totalBiaya = $biayaKonsultasi + $biayaTindakan + $biayaObat;
+            $totalBiaya = $biayaTindakan + $biayaObat;
 
-        $visit->update([
-            'doctor_id' => $validated['doctor_id'] ?? $visit->doctor_id,
-            'status' => $validated['status'],
-            'diagnosa' => $validated['diagnosa'] ?? $visit->diagnosa,
-            'tensi_darah' => $validated['tensi_darah'] ?? $visit->tensi_darah,
-            'suhu_tubuh' => $validated['suhu_tubuh'] ?? $visit->suhu_tubuh,
-            'berat_badan' => $validated['berat_badan'] ?? $visit->berat_badan,
-            'catatan_dokter' => $validated['catatan_dokter'] ?? $visit->catatan_dokter,
-            'biaya_konsultasi' => $biayaKonsultasi,
-            'biaya_tindakan' => $biayaTindakan,
-            'biaya_obat' => $biayaObat,
-            'total_biaya' => $totalBiaya,
-            'status_pembayaran' => $validated['status_pembayaran'],
-            'metode_pembayaran' => $validated['metode_pembayaran'] ?? $visit->metode_pembayaran,
-        ]);
+            $visit->update([
+                'doctor_id' => $validated['doctor_id'] ?? $visit->doctor_id,
+                'status' => $validated['status'],
+                'diagnosa' => $validated['diagnosa'] ?? $visit->diagnosa,
+                'tensi_darah' => $validated['tensi_darah'] ?? $visit->tensi_darah,
+                'suhu_tubuh' => $validated['suhu_tubuh'] ?? $visit->suhu_tubuh,
+                'berat_badan' => $validated['berat_badan'] ?? $visit->berat_badan,
+                'catatan_dokter' => $validated['catatan_dokter'] ?? $visit->catatan_dokter,
+                'biaya_konsultasi' => 0,
+                'biaya_tindakan' => $biayaTindakan,
+                'biaya_obat' => $biayaObat,
+                'total_biaya' => $totalBiaya,
+                'status_pembayaran' => $validated['status_pembayaran'],
+                'metode_pembayaran' => $validated['metode_pembayaran'] ?? $visit->metode_pembayaran,
+            ]);
+
+        });
 
         return redirect()->route('visits.show', $visit)->with('success', 'Data pemeriksaan kunjungan berhasil disimpan!');
     }

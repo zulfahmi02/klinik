@@ -4,12 +4,13 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h3 class="fw-bold mb-1"><i class="fa-solid fa-calendar-check text-primary me-2"></i>Kunjungan & Antrean Pasien</h3>
-            <p class="text-muted mb-0">Kelola registrasi kunjungan, antrean poliklinik, dan pelayanan medis</p>
+            <h3 class="fw-bold mb-1"><i class="fa-solid fa-calendar-check text-primary me-2"></i>Kunjungan Pasien</h3>
+            <p class="text-muted mb-0">Kelola registrasi kunjungan dan pelayanan medis</p>
         </div>
+        <div class="d-flex gap-2 flex-wrap"><a href="{{ route('visits.list.pdf', request()->except('page')) }}" class="btn btn-outline-primary">Unduh PDF Daftar</a>
         <a href="{{ route('visits.create') }}" class="btn btn-primary px-3 shadow-sm fw-semibold">
             <i class="fa-solid fa-plus me-1"></i> Daftarkan Kunjungan Baru
-        </a>
+        </a></div>
     </div>
 
     @if (session('success'))
@@ -41,7 +42,7 @@
                         <i class="fa-solid fa-clock"></i>
                     </div>
                     <div>
-                        <div class="text-muted small">Menunggu Antrean</div>
+                        <div class="text-muted small">Menunggu Pemeriksaan</div>
                         <h4 class="fw-bold mb-0 text-warning">{{ $menungguCount }}</h4>
                     </div>
                 </div>
@@ -87,7 +88,7 @@
                     <label class="form-label small fw-semibold text-secondary">Status Pelayanan</label>
                     <select class="form-select form-select-sm" name="status">
                         <option value="">-- Semua Status --</option>
-                        <option value="Menunggu" {{ $status === 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
+                        <option value="Menunggu" {{ $status === 'Menunggu' ? 'selected' : '' }}>Terdaftar</option>
                         <option value="Sedang Diperiksa" {{ $status === 'Sedang Diperiksa' ? 'selected' : '' }}>Sedang Diperiksa</option>
                         <option value="Selesai" {{ $status === 'Selesai' ? 'selected' : '' }}>Selesai</option>
                         <option value="Batal" {{ $status === 'Batal' ? 'selected' : '' }}>Batal</option>
@@ -116,7 +117,6 @@
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-light">
                         <tr>
-                            <th class="ps-3">Antrean</th>
                             <th>Waktu</th>
                             <th>Pasien</th>
                             <th>Poliklinik</th>
@@ -131,9 +131,7 @@
                     <tbody>
                         @forelse ($visits as $visit)
                             <tr>
-                                <td class="ps-3">
-                                    <span class="badge bg-primary fs-6 px-2 py-1">{{ $visit->no_antrean }}</span>
-                                </td>
+
                                 <td>
                                     <div class="fw-semibold">{{ $visit->jam_kunjungan ?? '-' }}</div>
                                     <small class="text-muted">{{ $visit->tanggal_kunjungan->format('d/m/Y') }}</small>
@@ -163,7 +161,7 @@
                                 </td>
                                 <td>
                                     @if ($visit->status === 'Menunggu')
-                                        <span class="badge bg-warning text-dark"><i class="fa-solid fa-clock me-1"></i> Menunggu</span>
+                                        <span class="badge bg-warning text-dark"><i class="fa-solid fa-clock me-1"></i> Terdaftar</span>
                                     @elseif ($visit->status === 'Sedang Diperiksa')
                                         <span class="badge bg-info text-white"><i class="fa-solid fa-stethoscope me-1"></i> Diperiksa</span>
                                     @elseif ($visit->status === 'Selesai')
@@ -192,7 +190,7 @@
                                         <a href="{{ route('visits.edit', $visit) }}" class="btn btn-outline-primary" title="Periksa / Edit Medis">
                                             <i class="fa-solid fa-user-doctor"></i> Periksa
                                         </a>
-                                        <form action="{{ route('visits.destroy', $visit) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus kunjungan antrean ini?')">
+                                        <form action="{{ route('visits.destroy', $visit) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus kunjungan ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger" title="Hapus">
@@ -204,7 +202,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="10" class="text-center py-5 text-muted">
+                                <td colspan="9" class="text-center py-5 text-muted">
                                     <i class="fa-solid fa-calendar-xmark fs-2 mb-2 d-block text-secondary"></i>
                                     Belum ada data kunjungan pada filter yang dipilih.
                                 </td>

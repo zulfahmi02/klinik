@@ -24,6 +24,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        $request->session()->forget(['reports.confirmation', 'reports.intended']);
         $request->authenticate();
 
         $request->session()->regenerate();

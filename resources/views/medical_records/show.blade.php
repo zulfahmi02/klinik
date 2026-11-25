@@ -11,7 +11,7 @@
             <button onclick="window.print()" class="btn btn-outline-secondary">
                 <i class="fa-solid fa-print me-1"></i> Cetak Rekam Medis
             </button>
-            <a href="{{ route('medical_records.index') }}" class="btn btn-outline-primary">
+            <a href="{{ route(request()->routeIs('reports.*') ? 'reports.visits' : 'medical_records.index') }}" class="btn btn-outline-primary">
                 <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Pencarian
             </a>
         </div>
@@ -56,7 +56,7 @@
                     <div class="fw-semibold">{{ $patient->no_hp ?? '-' }}</div>
                 </div>
                 <div class="col-md-3">
-                    <div class="text-muted small">Penjamin / No. BPJS:</div>
+                    <div class="text-muted small">Penjamin / Nomor penjamin:</div>
                     <div class="fw-semibold">
                         <span class="badge bg-light text-dark border">{{ $patient->penjamin ?? 'Umum' }}</span>
                         {{ $patient->no_penjamin ? "({$patient->no_penjamin})" : '' }}
@@ -87,7 +87,7 @@
                 <h6 class="card-title mb-0 fw-bold text-dark">
                     <i class="fa-solid fa-tooth text-warning me-2"></i>Catatan Odontogram Gigi Terakhir
                 </h6>
-                @if ($patient->dentalVisits()->exists())
+                @if ($patient->dentalVisits()->exists() && !request()->routeIs('reports.*'))
                 <a href="{{ route('odontogram.show', $patient) }}" class="btn btn-sm btn-outline-warning text-dark fw-semibold">
                     <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Buka Odontogram Penuh
                 </a>
@@ -121,7 +121,6 @@
         <div class="card border-0 shadow-sm rounded-3 mb-3">
             <div class="card-header bg-light py-3 d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center gap-2">
-                    <span class="badge bg-primary fs-6">{{ $visit->no_antrean }}</span>
                     <span class="fw-bold text-dark fs-6">{{ $visit->tanggal_kunjungan->format('d F Y') }}</span>
                     <span class="text-muted small">({{ $visit->jam_kunjungan ?? '-' }} WIB)</span>
                     <span class="badge bg-white text-dark border ms-2">{{ $visit->poli }}</span>
@@ -132,7 +131,7 @@
                     @elseif ($visit->status === 'Sedang Diperiksa')
                         <span class="badge bg-info text-white">Sedang Diperiksa</span>
                     @else
-                        <span class="badge bg-warning text-dark">Menunggu</span>
+                        <span class="badge bg-warning text-dark">Terdaftar</span>
                     @endif
                 </div>
             </div>
@@ -143,12 +142,6 @@
                         <div class="fw-bold text-dark">{{ $visit->doctor ? $visit->doctor->nama : 'Tidak tercatat' }}</div>
                         <div class="small text-muted mb-3">{{ $visit->doctor ? $visit->doctor->spesialisasi : '' }}</div>
 
-                        <div class="small text-muted mb-1">Tanda-Tanda Vital:</div>
-                        <div class="d-flex gap-2 flex-wrap">
-                            <span class="badge bg-light text-dark border">TD: {{ $visit->tensi_darah ?: '-' }}</span>
-                            <span class="badge bg-light text-dark border">Suhu: {{ $visit->suhu_tubuh ?: '-' }}</span>
-                            <span class="badge bg-light text-dark border">BB: {{ $visit->berat_badan ?: '-' }}</span>
-                        </div>
                     </div>
 
                     <div class="col-md-8">
@@ -185,7 +178,7 @@
                 </div>
             </div>
             <div class="card-footer bg-white border-top text-end py-2">
-                <a href="{{ route('visits.show', $visit) }}" class="btn btn-sm btn-outline-info">
+                <a href="{{ route(request()->routeIs('reports.*') ? 'reports.examinations.show' : 'visits.show', $visit) }}" class="btn btn-sm btn-outline-info">
                     <i class="fa-solid fa-eye me-1"></i> Rincian Kunjungan & Tagihan
                 </a>
             </div>

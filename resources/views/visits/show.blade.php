@@ -5,16 +5,19 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h3 class="fw-bold mb-1"><i class="fa-solid fa-file-medical text-primary me-2"></i>Detail Kunjungan Pasien</h3>
-            <p class="text-muted mb-0">Nomor Antrean: <strong>{{ $visit->no_antrean }}</strong> &bull; Waktu: {{ $visit->tanggal_kunjungan->format('d/m/Y') }} {{ $visit->jam_kunjungan }}</p>
+            <p class="text-muted mb-0">Waktu: {{ $visit->tanggal_kunjungan->format('d/m/Y') }} {{ $visit->jam_kunjungan }}</p>
         </div>
         <div class="d-flex gap-2">
-            <button onclick="window.print()" class="btn btn-outline-secondary">
+            <a href="{{ route(request()->routeIs('reports.*') ? 'reports.examinations.pdf' : 'visits.pdf', $visit) }}" class="btn btn-primary">Unduh PDF</a>
+            <a href="{{ route(request()->routeIs('reports.*') ? 'reports.examinations.print' : 'visits.print', $visit) }}" class="btn btn-outline-secondary">
                 <i class="fa-solid fa-print me-1"></i> Cetak Resume
-            </button>
+            </a>
+            @unless(request()->routeIs('reports.*'))
             <a href="{{ route('visits.edit', $visit) }}" class="btn btn-warning fw-semibold">
                 <i class="fa-solid fa-user-doctor me-1"></i> Periksa / Input Medis
             </a>
-            <a href="{{ route('visits.index') }}" class="btn btn-outline-primary">
+            @endunless
+            <a href="{{ route(request()->routeIs('reports.*') ? 'reports.visits' : 'visits.index') }}" class="btn btn-outline-primary">
                 <i class="fa-solid fa-arrow-left me-1"></i> Kembali
             </a>
         </div>
@@ -46,7 +49,7 @@
                         <span class="badge bg-secondary mt-1">{{ $visit->penjamin }}</span>
                     </div>
 
-                    <table class="table table-sm table-borderless mb-0">
+                    <table class="table table-sm table-borderless mb-0 patient-details">
                         <tr>
                             <td class="text-muted" style="width: 40%;">Jenis Kelamin:</td>
                             <td class="fw-semibold">{{ $visit->patient->jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
@@ -54,6 +57,10 @@
                         <tr>
                             <td class="text-muted">Tanggal Lahir:</td>
                             <td class="fw-semibold">{{ $visit->patient->tanggal_lahir ? $visit->patient->tanggal_lahir->format('d/m/Y') : '-' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">Nomor penjamin:</td>
+                            <td>{{ $visit->patient->no_penjamin ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-muted">No. Handphone:</td>
@@ -96,7 +103,7 @@
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="text-muted">Status Pelayanan:</span>
                         @if ($visit->status === 'Menunggu')
-                            <span class="badge bg-warning text-dark">Menunggu</span>
+                            <span class="badge bg-warning text-dark">Terdaftar</span>
                         @elseif ($visit->status === 'Sedang Diperiksa')
                             <span class="badge bg-info text-white">Sedang Diperiksa</span>
                         @elseif ($visit->status === 'Selesai')
@@ -119,37 +126,6 @@
 
         <!-- Examination Details -->
         <div class="col-lg-8">
-            <!-- Vital Signs -->
-            <div class="card border-0 shadow-sm rounded-3 mb-4">
-                <div class="card-header bg-white py-3 border-bottom">
-                    <h6 class="card-title mb-0 fw-bold text-dark">
-                        <i class="fa-solid fa-heart-pulse text-danger me-2"></i>Tanda-Tanda Vital (TTV)
-                    </h6>
-                </div>
-                <div class="card-body">
-                    <div class="row g-3 text-center">
-                        <div class="col-md-4">
-                            <div class="border rounded-3 p-3 bg-light">
-                                <div class="text-muted small">Tekanan Darah</div>
-                                <h4 class="fw-bold text-primary mb-0">{{ $visit->tensi_darah ?? '-' }}</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="border rounded-3 p-3 bg-light">
-                                <div class="text-muted small">Suhu Tubuh</div>
-                                <h4 class="fw-bold text-danger mb-0">{{ $visit->suhu_tubuh ?? '-' }}</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="border rounded-3 p-3 bg-light">
-                                <div class="text-muted small">Berat Badan</div>
-                                <h4 class="fw-bold text-success mb-0">{{ $visit->berat_badan ?? '-' }}</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Medical Diagnosis & Notes -->
             <div class="card border-0 shadow-sm rounded-3 mb-4">
                 <div class="card-header bg-white py-3 border-bottom">
@@ -166,7 +142,7 @@
                     <div class="mb-3">
                         <label class="text-muted small fw-bold">Diagnosa Medis:</label>
                         <div class="p-3 bg-light rounded-3 fw-semibold text-dark">
-                            {{ $visit->diagnosa ?: 'Belum diisi. Silakan klik "Periksa / Input Medis" di atas.' }}
+                            {{ $visit->diagnosa ?: 'Belum diisi.' }}
                         </div>
                     </div>
 
@@ -177,6 +153,9 @@
                 </div>
             </div>
 
+            @if ($visit->poli === 'Poli Gigi')
+                @include('odontogram.partials.visit')
+            @endif
             <!-- Treatments Given -->
             <div class="card border-0 shadow-sm rounded-3 mb-4">
                 <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
@@ -212,6 +191,7 @@
                 </div>
             </div>
 
+            <p class="text-muted small">Total tercatat mempertahankan nilai historis; rincian di bawah hanya tindakan dan obat.</p>
             <!-- Billing Summary -->
             <div class="card border-0 shadow-sm rounded-3">
                 <div class="card-header bg-white py-3 border-bottom">
@@ -223,10 +203,6 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="d-flex justify-content-between mb-2">
-                                <span class="text-muted">Biaya Konsultasi Dokter:</span>
-                                <span class="fw-semibold">Rp {{ number_format($visit->biaya_konsultasi, 0, ',', '.') }}</span>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
                                 <span class="text-muted">Biaya Tindakan Medis:</span>
                                 <span class="fw-semibold">Rp {{ number_format($visit->biaya_tindakan, 0, ',', '.') }}</span>
                             </div>
@@ -236,7 +212,7 @@
                             </div>
                             <hr>
                             <div class="d-flex justify-content-between fs-5 fw-bold text-primary">
-                                <span>Total Tagihan:</span>
+                                <span>Total tercatat:</span>
                                 <span>Rp {{ number_format($visit->total_biaya, 0, ',', '.') }}</span>
                             </div>
                         </div>

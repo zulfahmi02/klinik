@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h3 class="fw-bold mb-1"><i class="fa-solid fa-user-doctor text-primary me-2"></i>Pemeriksaan & Rekam Medis Kunjungan</h3>
-            <p class="text-muted mb-0">Pasien: <strong>{{ $visit->patient->nama }}</strong> ({{ $visit->patient->no_rm }}) &bull; No. Antrean: <span class="badge bg-primary">{{ $visit->no_antrean }}</span></p>
+            <p class="text-muted mb-0">Pasien: <strong>{{ $visit->patient->nama }}</strong> ({{ $visit->patient->no_rm }})</p>
         </div>
         <a href="{{ route('visits.show', $visit) }}" class="btn btn-outline-secondary">
             <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Detail
@@ -23,47 +23,23 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('visits.update', $visit) }}">
+    <div class="clinical-banner"><div class="patient-avatar">{{ mb_substr($visit->patient->nama, 0, 1) }}</div><div><strong class="fs-5">{{ $visit->patient->nama }}</strong><div class="clinical-meta">{{ $visit->patient->no_rm }} · Kunjungan #{{ $visit->id }} · {{ $visit->tanggal_kunjungan->format('d M Y') }}</div></div><span class="badge bg-primary ms-auto">Poli Gigi</span></div>
+    @if ($visit->patient->alergi)<div class="clinical-note"><strong>Alergi pasien:</strong> {{ $visit->patient->alergi }}</div>@endif
+    <nav class="clinical-links no-print" aria-label="Bagian pemeriksaan"><a href="#examination">Pemeriksaan</a><a href="#odontogram">Odontogram</a><a href="#billing">Tindakan & Biaya</a><a href="{{ route('medical_records.show', $visit->patient) }}">Riwayat pasien</a><a href="{{ route('visits.pdf', $visit) }}">Unduh PDF</a></nav>
+    @if ($visit->poli === 'Poli Gigi')
+        @include('odontogram.partials.visit')
+        @if ($snapshotAvailable && $visit->status !== 'Batal')
+            @include('odontogram.partials.editor')
+        @endif
+    @endif
+    <form id="examination" method="POST" action="{{ route('visits.update', $visit) }}" class="mt-4">
         @csrf
+        <input type="hidden" name="treatments_submitted" value="1">
         @method('PUT')
 
         <div class="row g-4">
             <!-- Left Column: Medical Examination -->
             <div class="col-lg-8">
-                <!-- Vital Signs Card -->
-                <div class="card border-0 shadow-sm rounded-3 mb-4">
-                    <div class="card-header bg-white py-3 border-bottom">
-                        <h6 class="card-title mb-0 fw-bold text-dark">
-                            <i class="fa-solid fa-heart-pulse text-danger me-2"></i>Tanda-Tanda Vital (TTV)
-                        </h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <label for="tensi_darah" class="form-label fw-semibold">Tekanan Darah</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="tensi_darah" name="tensi_darah" value="{{ old('tensi_darah', $visit->tensi_darah) }}" placeholder="120/80">
-                                    <span class="input-group-text small">mmHg</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="suhu_tubuh" class="form-label fw-semibold">Suhu Tubuh</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="suhu_tubuh" name="suhu_tubuh" value="{{ old('suhu_tubuh', $visit->suhu_tubuh) }}" placeholder="36.5">
-                                    <span class="input-group-text small">°C</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="berat_badan" class="form-label fw-semibold">Berat Badan</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="berat_badan" name="berat_badan" value="{{ old('berat_badan', $visit->berat_badan) }}" placeholder="65">
-                                    <span class="input-group-text small">kg</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Diagnosis & Treatment Notes -->
                 <div class="card border-0 shadow-sm rounded-3 mb-4">
                     <div class="card-header bg-white py-3 border-bottom">
@@ -83,6 +59,7 @@
                         </div>
 
                         <!-- Checkbox Treatments -->
+                        <div id="billing"></div>
                         <div class="mb-3">
                             <label class="form-label fw-semibold">Pilih Tindakan Medis yang Diberikan:</label>
                             @php
@@ -98,8 +75,8 @@
                                                     type="checkbox" 
                                                     name="treatment_ids[]" 
                                                     value="{{ $treatment->id }}" 
-                                                    id="treat_{{ $treatment->id }}"
-                                                    {{ in_array($treatment->id, old('treatment_ids', $existingTreatmentIds)) ? 'checked' : '' }}
+                                                    id="treat_{{ $treatment->id }}" data-cost="{{ $visit->visitTreatments->firstWhere('treatment_id', $treatment->id)?->biaya ?? $treatment->tarif }}"
+                                                    {{ in_array($treatment->id, old('treatment_ids', old('treatments_submitted') ? [] : $existingTreatmentIds)) ? 'checked' : '' }}
                                                 >
                                                 <label class="form-check-label small" for="treat_{{ $treatment->id }}">
                                                     <strong>{{ $treatment->nama }}</strong>
@@ -117,7 +94,7 @@
 
                         <div class="mb-0">
                             <label for="catatan_dokter" class="form-label fw-semibold">Catatan Terapi / Resep Obat / Instruksi</label>
-                            <textarea class="form-control" id="catatan_dokter" name="catatan_dokter" rows="3" placeholder="Contoh: Paracetamol 500mg 3x1, Amoxicillin 500mg 3x1 setelah makan...">{{ old('catatan_dokter', $visit->catatan_dokter) }}</textarea>
+                            <textarea class="form-control" id="catatan_dokter" name="catatan_dokter" rows="3" placeholder="Tuliskan hasil perawatan, obat bila diberikan, dan instruksi kontrol...">{{ old('catatan_dokter', $visit->catatan_dokter) }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -147,7 +124,7 @@
                         <div class="mb-3">
                             <label for="status" class="form-label fw-semibold">Status Pelayanan <span class="text-danger">*</span></label>
                             <select class="form-select fw-semibold" id="status" name="status" required>
-                                <option value="Menunggu" {{ old('status', $visit->status) === 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
+                                <option value="Menunggu" {{ old('status', $visit->status) === 'Menunggu' ? 'selected' : '' }}>Terdaftar</option>
                                 <option value="Sedang Diperiksa" {{ old('status', $visit->status) === 'Sedang Diperiksa' ? 'selected' : '' }}>Sedang Diperiksa</option>
                                 <option value="Selesai" {{ old('status', $visit->status) === 'Selesai' ? 'selected' : '' }}>Selesai</option>
                                 <option value="Batal" {{ old('status', $visit->status) === 'Batal' ? 'selected' : '' }}>Batal</option>
@@ -163,16 +140,14 @@
                         </h6>
                     </div>
                     <div class="card-body">
-                        <div class="mb-3">
-                            <label for="biaya_konsultasi" class="form-label fw-semibold">Biaya Konsultasi (Rp)</label>
-                            <input type="number" class="form-control" id="biaya_konsultasi" name="biaya_konsultasi" value="{{ old('biaya_konsultasi', $visit->biaya_konsultasi) }}">
-                        </div>
+
 
                         <div class="mb-3">
                             <label for="biaya_obat" class="form-label fw-semibold">Biaya Obat / Resep (Rp)</label>
-                            <input type="number" class="form-control" id="biaya_obat" name="biaya_obat" value="{{ old('biaya_obat', $visit->biaya_obat) }}">
+                            <input type="number" class="form-control" id="biaya_obat" name="biaya_obat" min="0" value="{{ old('biaya_obat', $visit->biaya_obat) }}">
                         </div>
 
+                        <div class="rounded-3 p-3 mb-3" style="background:var(--mint)"><div class="small">Perkiraan total tindakan + obat</div><strong class="fs-4 text-primary" id="billing-total" aria-live="polite">Rp {{ number_format($visit->biaya_tindakan + $visit->biaya_obat, 0, ',', '.') }}</strong><div class="small text-muted">Diperbarui mengikuti tindakan yang dipilih.</div></div>
                         <div class="mb-3">
                             <label for="status_pembayaran" class="form-label fw-semibold">Status Kasir</label>
                             <select class="form-select" id="status_pembayaran" name="status_pembayaran">
@@ -204,3 +179,13 @@
     </form>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+(() => {
+ const inputs = document.querySelectorAll('[data-cost]'); const medicine = document.getElementById('biaya_obat');
+ function updateTotal() { let total = Math.max(0, Number(medicine.value) || 0); inputs.forEach(input => { if (input.checked) total += Number(input.dataset.cost); }); document.getElementById('billing-total').textContent = 'Rp ' + new Intl.NumberFormat('id-ID').format(total); }
+ inputs.forEach(input => input.addEventListener('change', updateTotal)); medicine.addEventListener('input', updateTotal); updateTotal();
+})();
+</script>
+@endpush

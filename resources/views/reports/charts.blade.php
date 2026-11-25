@@ -5,8 +5,9 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h3 class="fw-bold mb-1"><i class="fa-solid fa-chart-line text-primary me-2"></i>Grafik & Analitik Kunjungan Pasien</h3>
-            <p class="text-muted mb-0">Grafik bulanan dan sebaran layanan mengikuti tahun {{ $year }}. Angka menunjukkan jumlah kunjungan, termasuk kunjungan batal.</p>
+            <p class="text-muted mb-0">Grafik tren bulanan mengikuti tahun {{ $year }}. Angka menunjukkan jumlah kunjungan, termasuk kunjungan batal.</p>
         </div>
+        <a href="{{ route('reports.charts.pdf', request()->query()) }}" class="btn btn-primary no-print">Unduh PDF</a>
         <form method="GET" action="{{ route('reports.charts') }}" class="d-flex align-items-center gap-2">
             <label class="small text-muted fw-semibold mb-0">Tahun:</label>
             <select aria-label="Tahun laporan" name="year" class="form-select form-select-sm" onchange="this.form.submit()">
@@ -66,24 +67,8 @@
 
     <!-- Secondary Charts Row -->
     <div class="row g-4">
-        <!-- Polyclinic Distribution -->
-        <div class="col-lg-4">
-            <div class="card border-0 shadow-sm rounded-3 h-100">
-                <div class="card-header bg-white py-3 border-bottom">
-                    <h6 class="card-title mb-0 fw-bold text-dark">
-                        <i class="fa-solid fa-chart-pie text-info me-2"></i>Sebaran Kunjungan per Poliklinik
-                    </h6>
-                </div>
-                <div class="card-body p-4 d-flex align-items-center justify-content-center">
-                    <div style="position: relative; width: 100%; height: 260px;">
-                        <canvas id="poliChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Penjamin (BPJS vs Umum) -->
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="card border-0 shadow-sm rounded-3 h-100">
                 <div class="card-header bg-white py-3 border-bottom">
                     <h6 class="card-title mb-0 fw-bold text-dark">
@@ -99,7 +84,7 @@
         </div>
 
         <!-- Doctor Visits Workload -->
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="card border-0 shadow-sm rounded-3 h-100">
                 <div class="card-header bg-white py-3 border-bottom">
                     <h6 class="card-title mb-0 fw-bold text-dark">
@@ -180,28 +165,6 @@
                 plugins: { legend: { display: false } },
                 scales: {
                     y: { beginAtZero: true, ticks: { stepSize: 1 } }
-                }
-            }
-        });
-
-        // 3. Polyclinic Doughnut Chart
-        const poliData = {{ Illuminate\Support\Js::from($poliVisits) }};
-        new Chart(document.getElementById('poliChart'), {
-            type: 'doughnut',
-            data: {
-                labels: Object.keys(poliData),
-                datasets: [{
-                    data: Object.values(poliData),
-                    backgroundColor: ['#2563eb', '#0d9488', '#f59e0b', '#8b5cf6'],
-                    borderWidth: 2,
-                    borderColor: '#ffffff',
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'bottom' }
                 }
             }
         });

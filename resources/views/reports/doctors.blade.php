@@ -2,14 +2,15 @@
 
 @section('content')
 <div class="container-fluid">
+    @if ($errors->any())
+        <div class="alert alert-danger" role="alert">Filter belum valid: {{ $errors->first() }}</div>
+    @endif
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h3 class="fw-bold mb-1"><i class="fa-solid fa-user-doctor text-primary me-2"></i>Laporan Kinerja & Pelayanan Dokter</h3>
             <p class="text-muted mb-0">Rekapitulasi aktivitas dokter, volume pasien yang ditangani, dan kontribusi layanan</p>
         </div>
-        <button onclick="window.print()" class="btn btn-primary px-3 shadow-sm fw-semibold">
-            <i class="fa-solid fa-print me-1"></i> Cetak Laporan Dokter
-        </button>
+        <a href="{{ route('reports.doctors.pdf', request()->query()) }}" class="btn btn-primary no-print">Unduh PDF</a>
     </div>
 
     @if (session('success'))
@@ -59,9 +60,8 @@
                             <th class="text-center">Total Pasien</th>
                             <th class="text-center">Pelayanan Selesai</th>
                             <th class="text-center">Tindakan Dilakukan</th>
-                            <th class="text-end">Jasa Konsultasi</th>
                             <th class="text-end">Biaya Tindakan</th>
-                            <th class="text-end pe-3">Total Nilai Layanan</th>
+                            <th class="text-end pe-3">Total Tindakan + Obat</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,9 +83,6 @@
                                     <span class="badge bg-info text-white fs-6 px-3 py-1">{{ $doc['total_tindakan'] }}x</span>
                                 </td>
                                 <td class="text-end fw-semibold">
-                                    Rp {{ number_format($doc['total_konsultasi'], 0, ',', '.') }}
-                                </td>
-                                <td class="text-end fw-semibold">
                                     Rp {{ number_format($doc['total_tindakan_rp'], 0, ',', '.') }}
                                 </td>
                                 <td class="text-end pe-3 fw-bold text-success fs-6">
@@ -94,7 +91,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="9" class="text-center py-4 text-muted">
+                                <td colspan="8" class="text-center py-4 text-muted">
                                     Tidak ada data dokter tercatat.
                                 </td>
                             </tr>
@@ -107,7 +104,6 @@
                                 <td class="text-center">{{ $doctorStats->sum('total_pasien') }} Pasien</td>
                                 <td class="text-center">{{ $doctorStats->sum('pasien_selesai') }} Selesai</td>
                                 <td class="text-center">{{ $doctorStats->sum('total_tindakan') }}x</td>
-                                <td class="text-end">Rp {{ number_format($doctorStats->sum('total_konsultasi'), 0, ',', '.') }}</td>
                                 <td class="text-end">Rp {{ number_format($doctorStats->sum('total_tindakan_rp'), 0, ',', '.') }}</td>
                                 <td class="text-end pe-3 text-success fs-6">
                                     Rp {{ number_format($doctorStats->sum('total_pendapatan'), 0, ',', '.') }}

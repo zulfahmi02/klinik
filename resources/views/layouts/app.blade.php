@@ -101,13 +101,15 @@
             a { color: inherit !important; text-decoration: none !important; }
         }
     </style>
+<link rel="stylesheet" href="{{ asset('css/clinic.css') }}?v={{ filemtime(public_path('css/clinic.css')) }}">
 </head>
 <body>
     <div class="d-flex app-shell">
         <!-- Sidebar -->
         <div id="nav-backdrop" class="nav-backdrop" hidden></div>
         <nav class="sidebar" id="staff-navigation" aria-label="Navigasi petugas">
-            <div class="sidebar-brand"><span aria-hidden="true">+</span>{{ config('app.name', 'Klinik') }}</div>
+            <div class="sidebar-brand"><span aria-hidden="true"><i class="fa-solid fa-tooth"></i></span>{{ config('app.name', 'Klinik') }}</div>
+            @unless(request()->routeIs('reports.*'))
             <div class="nav-caption">Ruang pelayanan</div>
             <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <i class="fa-solid fa-chart-pie w-20"></i> Dashboard
@@ -116,20 +118,21 @@
                 <i class="fa-solid fa-hospital-user w-20"></i> Data Pasien
             </a>
             <a href="{{ route('visits.index') }}" class="{{ request()->routeIs('visits.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-calendar-check w-20"></i> Kunjungan
-            </a>
-            <a href="{{ route('odontogram.index') }}" class="{{ request()->routeIs('odontogram.*') ? 'active' : '' }}">
-                <i class="fa-solid fa-tooth w-20"></i> Odontogram
+                <i class="fa-solid fa-calendar-check w-20"></i> Kunjungan / Pemeriksaan
             </a>
             <a href="{{ route('medical_records.index') }}" class="{{ request()->routeIs('medical_records.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-clock-rotate-left w-20"></i> Riwayat Pasien
             </a>
             <details {{ request()->routeIs('doctors.*') ? 'open' : '' }}>
                 <summary >Pengelolaan Dokter</summary>
-                <a href="{{ route('doctors.index') }}" class="ps-4 {{ request()->routeIs('doctors.index', 'doctors.show') ? 'active' : '' }}">Data & Detail Dokter</a>
+                <a href="{{ route('doctors.index') }}" class="ps-4 {{ request()->routeIs('doctors.index', 'doctors.show', 'doctors.edit') ? 'active' : '' }}">Data & Detail Dokter</a>
                 <a href="{{ route('doctors.create') }}" class="ps-4 {{ request()->routeIs('doctors.create') ? 'active' : '' }}">Tambah Dokter</a>
             </details>
-            <div class="nav-caption">Laporan & analitik</div>
+            <div class="nav-caption">Laporan &amp; analitik</div>
+            <a href="{{ route('reports.entry') }}">Laporan Klinik · Login Ulang</a>
+            @else
+            <div class="nav-caption">Laporan &amp; analitik · Baca Saja</div>
+            <a href="{{ route('reports.index') }}" class="{{ request()->routeIs('reports.index') ? 'active' : '' }}">Laporan Klinik</a>
             <a href="{{ route('reports.visits') }}" class="{{ request()->routeIs('reports.visits') ? 'active' : '' }}">
                 <i class="fa-solid fa-file-waveform w-20"></i> Laporan Kunjungan
             </a>
@@ -145,6 +148,8 @@
             <a href="{{ route('reports.doctors') }}" class="{{ request()->routeIs('reports.doctors') ? 'active' : '' }}">
                 <i class="fa-solid fa-user-doctor w-20"></i> Laporan Dokter
             </a>
+            <a href="{{ route('dashboard') }}">Keluar ke Pemeriksaan</a>
+            @endunless
             <div class="sidebar-foot">Ruang kerja petugas<br>Pelayanan yang lebih terarah.</div>
         </nav>
 
@@ -153,7 +158,7 @@
             <div class="topbar d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center gap-3">
                     <button type="button" class="btn btn-outline-primary mobile-menu" id="nav-toggle" aria-controls="staff-navigation" aria-expanded="false" aria-label="Buka navigasi"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
-                    <div><span class="workspace-label">Ruang kerja klinik</span><strong class="workspace-title">{{ now()->locale('id')->translatedFormat('l, d F Y') }}</strong></div>
+                    <div><span class="workspace-label">{{ request()->routeIs('reports.*') ? 'Laporan Klinik · Baca Saja' : 'Pemeriksaan Klinik' }}</span><strong class="workspace-title">{{ now()->locale('id')->translatedFormat('l, d F Y') }}</strong></div>
                 </div>
                 <div class="d-flex align-items-center gap-3">
                     @auth
@@ -167,11 +172,13 @@
                                         Masuk sebagai: <strong>{{ Auth::user()->name }}</strong>
                                     </div>
                                 </li>
+                                @unless(request()->routeIs('reports.*'))
                                 <li>
                                     <a class="dropdown-item py-2" href="{{ route('profile.edit') }}">
                                         <i class="fa-solid fa-user-pen text-primary me-2"></i> Profil & Ganti Password
                                     </a>
                                 </li>
+                                @endunless
                                 <li><hr class="dropdown-divider my-1"></li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
@@ -212,6 +219,7 @@
             window.matchMedia('(min-width: 768px)').addEventListener('change', closeMenu);
         })();
     </script>
+    <script src="{{ asset('js/clinic.js') }}?v={{ filemtime(public_path('js/clinic.js')) }}"></script>
     @stack('scripts')
 </body>
 </html>

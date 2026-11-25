@@ -6,30 +6,83 @@ use App\Models\Doctor;
 use App\Models\Treatment;
 use App\Models\Visit;
 use App\Models\VisitTreatment;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
+    public function index()
+    {
+        return view('reports.index');
+    }
+
+    private function downloadReport(string $view, array $data, string $filename)
+    {
+        return Pdf::loadView($view, $data)
+            ->setPaper('a4', 'landscape')
+            ->setOptions(['isRemoteEnabled' => false, 'isPhpEnabled' => false, 'isJavascriptEnabled' => false])
+            ->download($filename, ['Cache-Control' => 'private, no-store']);
+    }
+
+    private function validatePeriod(Request $request, array $extra = []): void
+    {
+        $request->merge([
+            'start_date' => $request->input('start_date') ?: now()->startOfMonth()->toDateString(),
+            'end_date' => $request->input('end_date') ?: now()->toDateString(),
+        ]);
+        $request->validate(array_merge([
+            'start_date' => 'required|date_format:Y-m-d',
+            'end_date' => 'required|date_format:Y-m-d|after_or_equal:start_date',
+        ], $extra));
+    }
+
+    public function financePdf(Request $request)
+    {
+        return $this->downloadReport('reports.finance-pdf', $this->finance($request)->getData(), 'laporan-finance.pdf');
+    }
+
+    public function treatmentsPdf(Request $request)
+    {
+        return $this->downloadReport('reports.treatments-pdf', $this->treatments($request)->getData(), 'laporan-treatments.pdf');
+    }
+
+    public function doctorsPdf(Request $request)
+    {
+        return $this->downloadReport('reports.doctors-pdf', $this->doctors($request)->getData(), 'laporan-doctors.pdf');
+    }
+
+    public function chartsPdf(Request $request)
+    {
+        return $this->downloadReport('reports.charts-pdf', $this->charts($request)->getData(), 'laporan-charts.pdf');
+    }
+
     /**
      * Laporan Kunjungan
      */
     public function visits(Request $request)
     {
-        $request->validate(['search' => 'nullable|string|max:255']);
+        $rules = ['search' => 'nullable|string|max:255', 'poli' => 'nullable|in:Poli Gigi',
+            'start_date' => 'nullable|date_format:Y-m-d', 'end_date' => 'nullable|date_format:Y-m-d',
+            'doctor_id' => 'nullable|integer|exists:doctors,id', 'penjamin' => 'nullable|in:Umum,BPJS,Asuransi Swasta',
+            'status' => 'nullable|in:Menunggu,Sedang Diperiksa,Selesai,Batal'];
+        if ($request->filled('start_date')) {
+            $rules['end_date'] .= '|after_or_equal:start_date';
+        }
+        $request->validate($rules);
         $search = trim((string) $request->input('search', ''));
-        $startDate = $request->input('start_date', now()->startOfMonth()->toDateString());
-        $endDate = $request->input('end_date', now()->toDateString());
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
         $poli = $request->input('poli');
         $doctorId = $request->input('doctor_id');
         $penjamin = $request->input('penjamin');
         $status = $request->input('status');
 
         $query = Visit::with(['patient', 'doctor', 'visitTreatments'])
-            ->whereDate('tanggal_kunjungan', '>=', $startDate)
-            ->whereDate('tanggal_kunjungan', '<=', $endDate)
-            ->orderBy('tanggal_kunjungan', 'desc');
+            ->when($startDate, fn ($q) => $q->whereDate('tanggal_kunjungan', '>=', $startDate))
+            ->when($endDate, fn ($q) => $q->whereDate('tanggal_kunjungan', '<=', $endDate))
+            ->orderBy('tanggal_kunjungan', 'desc')->orderByDesc('id');
 
         if ($poli) {
             $query->where('poli', $poli);
@@ -51,18 +104,18 @@ class ReportController extends Controller
                     $patient->where('nama', 'like', $term)->orWhere('no_rm', 'like', $term)
                         ->orWhere('nik', 'like', $term)->orWhere('no_hp', 'like', $term);
                 })->orWhereHas('doctor', fn ($doctor) => $doctor->where('nama', 'like', $term))
-                    ->orWhere('no_antrean', 'like', $term)
                     ->orWhere('keluhan', 'like', $term)->orWhere('diagnosa', 'like', $term);
             });
         }
 
-        $visits = $query->get();
+        $allVisits = $query->get();
+        $visits = $request->routeIs('reports.visits.pdf') ? $allVisits : $query->paginate(15)->withQueryString();
 
-        // Summary stats
-        $totalVisits = $visits->count();
-        $totalSelesai = $visits->where('status', 'Selesai')->count();
-        $totalBpjs = $visits->where('penjamin', 'BPJS')->count();
-        $totalUmum = $visits->where('penjamin', 'Umum')->count();
+        // Summary stats cover all matching records, not just the displayed page.
+        $totalVisits = $allVisits->count();
+        $totalSelesai = $allVisits->where('status', 'Selesai')->count();
+        $totalBpjs = $allVisits->where('penjamin', 'BPJS')->count();
+        $totalUmum = $allVisits->where('penjamin', 'Umum')->count();
 
         $doctors = Doctor::orderBy('nama')->get();
 
@@ -70,6 +123,16 @@ class ReportController extends Controller
             'visits', 'startDate', 'endDate', 'poli', 'doctorId', 'penjamin', 'status',
             'totalVisits', 'totalSelesai', 'totalBpjs', 'totalUmum', 'doctors', 'search'
         ));
+    }
+
+    public function visitsPdf(Request $request)
+    {
+        $data = $this->visits($request)->getData();
+
+        return Pdf::loadView('reports.visits-pdf', $data)
+            ->setPaper('a4', 'landscape')
+            ->setOptions(['isRemoteEnabled' => false, 'isPhpEnabled' => false, 'isJavascriptEnabled' => false])
+            ->download('rekap-kunjungan-klinik.pdf');
     }
 
     /**
@@ -101,8 +164,6 @@ class ReportController extends Controller
             $monthlyData[] = (int) $totals->{'month_'.$m};
         }
 
-        $poliVisits = (clone $yearQuery)->select('poli', DB::raw('count(*) as count'))
-            ->groupBy('poli')->orderBy('poli')->pluck('count', 'poli')->toArray();
         $penjaminVisits = (clone $yearQuery)->select('penjamin', DB::raw('count(*) as count'))
             ->groupBy('penjamin')->orderBy('penjamin')->pluck('count', 'penjamin')->toArray();
         $doctorVisits = (clone $yearQuery)->with('doctor')
@@ -129,7 +190,7 @@ class ReportController extends Controller
 
         return view('reports.charts', compact(
             'year', 'monthsLabels', 'monthlyData',
-            'poliVisits', 'penjaminVisits', 'doctorVisits',
+            'penjaminVisits', 'doctorVisits',
             'dailyLabels', 'dailyTrend'
         ));
     }
@@ -139,13 +200,14 @@ class ReportController extends Controller
      */
     public function finance(Request $request)
     {
+        $this->validatePeriod($request, ['status_pembayaran' => 'nullable|in:Lunas,Belum Lunas', 'metode_pembayaran' => 'nullable|in:Tunai,QRIS,Transfer,BPJS']);
         $startDate = $request->input('start_date', now()->startOfMonth()->toDateString());
         $endDate = $request->input('end_date', now()->toDateString());
         $statusPembayaran = $request->input('status_pembayaran');
         $metodePembayaran = $request->input('metode_pembayaran');
 
         $query = Visit::with(['patient', 'doctor'])
-            ->whereBetween('tanggal_kunjungan', [$startDate, $endDate])
+            ->whereDate('tanggal_kunjungan', '>=', $startDate)->whereDate('tanggal_kunjungan', '<=', $endDate)
             ->orderBy('tanggal_kunjungan', 'desc');
 
         if ($statusPembayaran) {
@@ -159,14 +221,13 @@ class ReportController extends Controller
 
         // Totals
         $totalPendapatan = $visits->where('status_pembayaran', 'Lunas')->sum('total_biaya');
-        $totalKonsultasi = $visits->where('status_pembayaran', 'Lunas')->sum('biaya_konsultasi');
         $totalTindakan = $visits->where('status_pembayaran', 'Lunas')->sum('biaya_tindakan');
         $totalObat = $visits->where('status_pembayaran', 'Lunas')->sum('biaya_obat');
         $totalPiutang = $visits->where('status_pembayaran', 'Belum Lunas')->sum('total_biaya');
 
         return view('reports.finance', compact(
             'visits', 'startDate', 'endDate', 'statusPembayaran', 'metodePembayaran',
-            'totalPendapatan', 'totalKonsultasi', 'totalTindakan', 'totalObat', 'totalPiutang'
+            'totalPendapatan', 'totalTindakan', 'totalObat', 'totalPiutang'
         ));
     }
 
@@ -175,13 +236,14 @@ class ReportController extends Controller
      */
     public function treatments(Request $request)
     {
+        $this->validatePeriod($request, ['kategori' => 'nullable|string|max:255']);
         $startDate = $request->input('start_date', now()->startOfMonth()->toDateString());
         $endDate = $request->input('end_date', now()->toDateString());
         $kategori = $request->input('kategori');
 
         $query = VisitTreatment::with(['treatment', 'visit.patient', 'visit.doctor'])
             ->whereHas('visit', function ($q) use ($startDate, $endDate) {
-                $q->whereBetween('tanggal_kunjungan', [$startDate, $endDate]);
+                $q->whereDate('tanggal_kunjungan', '>=', $startDate)->whereDate('tanggal_kunjungan', '<=', $endDate);
             });
 
         if ($kategori) {
@@ -218,18 +280,18 @@ class ReportController extends Controller
      */
     public function doctors(Request $request)
     {
+        $this->validatePeriod($request, []);
         $startDate = $request->input('start_date', now()->startOfMonth()->toDateString());
         $endDate = $request->input('end_date', now()->toDateString());
 
         $doctors = Doctor::with(['visits' => function ($q) use ($startDate, $endDate) {
-            $q->whereBetween('tanggal_kunjungan', [$startDate, $endDate]);
+            $q->whereDate('tanggal_kunjungan', '>=', $startDate)->whereDate('tanggal_kunjungan', '<=', $endDate);
         }, 'visits.visitTreatments'])->get();
 
         $doctorStats = $doctors->map(function ($doctor) {
             $visits = $doctor->visits;
             $totalPasien = $visits->count();
             $pasienSelesai = $visits->where('status', 'Selesai')->count();
-            $totalKonsultasi = $visits->sum('biaya_konsultasi');
 
             $totalTindakanCount = 0;
             $totalBiayaTindakan = 0;
@@ -238,7 +300,7 @@ class ReportController extends Controller
                 $totalBiayaTindakan += $v->visitTreatments->sum('biaya');
             }
 
-            $totalPendapatan = $totalKonsultasi + $totalBiayaTindakan;
+            $totalPendapatan = $totalBiayaTindakan + $visits->sum('biaya_obat');
 
             return [
                 'id' => $doctor->id,
@@ -248,7 +310,6 @@ class ReportController extends Controller
                 'total_pasien' => $totalPasien,
                 'pasien_selesai' => $pasienSelesai,
                 'total_tindakan' => $totalTindakanCount,
-                'total_konsultasi' => $totalKonsultasi,
                 'total_tindakan_rp' => $totalBiayaTindakan,
                 'total_pendapatan' => $totalPendapatan,
             ];

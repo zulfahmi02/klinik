@@ -37,9 +37,9 @@ class PublicRegistrationController extends Controller
             'penjamin' => ['required', 'in:Umum,BPJS,Asuransi Swasta'],
             'no_penjamin' => ['nullable', 'required_unless:penjamin,Umum', 'string', 'max:50'],
             'alergi' => ['nullable', 'string', 'max:2000'],
-            'poli' => ['required', 'in:Poli Umum,Poli Gigi,KIA / KB,Poli Anak'],
+            'poli' => ['required', 'in:Poli Gigi'],
             'keluhan' => ['required', 'string', 'max:2000'],
-        ]);
+        ], ['no_penjamin.required_unless' => 'Nomor penjamin wajib diisi untuk BPJS dan asuransi swasta.'], ['no_penjamin' => 'Nomor penjamin']);
 
         if ($data['registration_token'] !== $request->session()->get('registration_token')) {
             throw ValidationException::withMessages(['registration_token' => 'Form sudah kedaluwarsa. Muat ulang halaman dan coba kembali.']);
@@ -59,10 +59,10 @@ class PublicRegistrationController extends Controller
                 collect($data)->only(['nama', 'nik', 'jenis_kelamin', 'tanggal_lahir', 'alamat', 'no_hp', 'penjamin', 'no_penjamin', 'alergi'])->all(),
                 ['no_rm' => $noRm]
             ));
-            $queue = $numbers->next('visit', $date);
-            Visit::create([
+            $reference = $numbers->next('visit', $date);
+            $visit = Visit::create([
                 'patient_id' => $patient->id,
-                'no_antrean' => $queue,
+                'no_antrean' => $reference,
                 'poli' => $data['poli'],
                 'tanggal_kunjungan' => $date,
                 'jam_kunjungan' => $now->format('H:i'),
@@ -70,12 +70,11 @@ class PublicRegistrationController extends Controller
                 'keluhan' => $data['keluhan'],
                 'status' => 'Menunggu',
                 'status_pembayaran' => 'Belum Lunas',
-                // Match the existing consultation default; staff confirms final fees.
-                'biaya_konsultasi' => 50000,
-                'total_biaya' => 50000,
+                'biaya_konsultasi' => 0,
+                'total_biaya' => 0,
             ]);
 
-            return ['token' => $data['registration_token'], 'no_rm' => $noRm, 'no_antrean' => $queue, 'poli' => $data['poli'], 'tanggal' => $now->format('d/m/Y')];
+            return ['visit_id' => $visit->id, 'nama' => $patient->nama, 'penjamin' => $data['penjamin'], 'no_penjamin' => $data['no_penjamin'] ?? null, 'token' => $data['registration_token'], 'no_rm' => $noRm, 'poli' => $data['poli'], 'tanggal' => $now->format('d/m/Y')];
         }, 3);
 
         $request->session()->put('registration_receipt', $receipt);

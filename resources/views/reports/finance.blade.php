@@ -2,14 +2,15 @@
 
 @section('content')
 <div class="container-fluid">
+    @if ($errors->any())
+        <div class="alert alert-danger" role="alert">Filter belum valid: {{ $errors->first() }}</div>
+    @endif
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h3 class="fw-bold mb-1"><i class="fa-solid fa-file-invoice-dollar text-primary me-2"></i>Laporan Keuangan & Pendapatan Klinik</h3>
-            <p class="text-muted mb-0">Rekapitulasi pendapatan kasir poliklinik, biaya tindakan, konsultasi, dan obat</p>
+            <p class="text-muted mb-0">Rekapitulasi pendapatan kasir poliklinik, biaya tindakan dan obat</p>
         </div>
-        <button onclick="window.print()" class="btn btn-primary px-3 shadow-sm fw-semibold">
-            <i class="fa-solid fa-print me-1"></i> Cetak Laporan Keuangan
-        </button>
+        <a href="{{ route('reports.finance.pdf', request()->query()) }}" class="btn btn-primary no-print">Unduh PDF</a>
     </div>
 
     <!-- Filter Bar -->
@@ -65,14 +66,6 @@
         <div class="col-md-2">
             <div class="card border-0 shadow-sm rounded-3">
                 <div class="card-body">
-                    <div class="text-muted small">Jasa Konsultasi</div>
-                    <h5 class="fw-bold text-primary mb-0">Rp {{ number_format($totalKonsultasi, 0, ',', '.') }}</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="card border-0 shadow-sm rounded-3">
-                <div class="card-body">
                     <div class="text-muted small">Biaya Tindakan</div>
                     <h5 class="fw-bold text-info mb-0">Rp {{ number_format($totalTindakan, 0, ',', '.') }}</h5>
                 </div>
@@ -96,6 +89,7 @@
         </div>
     </div>
 
+    <p class="text-muted small">Total tercatat mempertahankan nilai historis; rincian hanya tindakan dan obat.</p>
     <!-- Print Header -->
     <div class="d-none d-print-block text-center mb-4 pb-2 border-bottom">
         <h3 class="fw-bold mb-1">KLINIK PRATAMA MEDIKA</h3>
@@ -112,13 +106,12 @@
                         <tr>
                             <th class="text-center" style="width: 50px;">No.</th>
                             <th>Tanggal</th>
-                            <th>No. Antrean & RM</th>
+                            <th>No. RM</th>
                             <th>Nama Pasien</th>
                             <th>Poli & Dokter</th>
-                            <th class="text-end">Konsultasi</th>
                             <th class="text-end">Tindakan</th>
                             <th class="text-end">Obat</th>
-                            <th class="text-end">Total Biaya</th>
+                            <th class="text-end">Total Tercatat</th>
                             <th>Status & Metode</th>
                         </tr>
                     </thead>
@@ -128,7 +121,6 @@
                                 <td class="text-center">{{ $idx + 1 }}</td>
                                 <td>{{ $v->tanggal_kunjungan->format('d/m/Y') }}</td>
                                 <td>
-                                    <span class="badge bg-primary">{{ $v->no_antrean }}</span>
                                     <div class="small text-muted">{{ $v->patient ? $v->patient->no_rm : '-' }}</div>
                                 </td>
                                 <td class="fw-bold text-dark">{{ $v->patient ? $v->patient->nama : '-' }}</td>
@@ -136,7 +128,6 @@
                                     <div class="small fw-semibold">{{ $v->poli }}</div>
                                     <small class="text-muted">{{ $v->doctor ? $v->doctor->nama : '-' }}</small>
                                 </td>
-                                <td class="text-end">Rp {{ number_format($v->biaya_konsultasi, 0, ',', '.') }}</td>
                                 <td class="text-end">Rp {{ number_format($v->biaya_tindakan, 0, ',', '.') }}</td>
                                 <td class="text-end">Rp {{ number_format($v->biaya_obat, 0, ',', '.') }}</td>
                                 <td class="text-end fw-bold text-primary">Rp {{ number_format($v->total_biaya, 0, ',', '.') }}</td>
@@ -151,7 +142,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="10" class="text-center py-5 text-muted">
+                                <td colspan="9" class="text-center py-5 text-muted">
                                     Tidak ada transaksi keuangan pada periode ini.
                                 </td>
                             </tr>
@@ -161,7 +152,6 @@
                         <tfoot class="table-light fw-bold">
                             <tr>
                                 <td colspan="5" class="text-end">TOTAL KESELURUHAN:</td>
-                                <td class="text-end">Rp {{ number_format($visits->sum('biaya_konsultasi'), 0, ',', '.') }}</td>
                                 <td class="text-end">Rp {{ number_format($visits->sum('biaya_tindakan'), 0, ',', '.') }}</td>
                                 <td class="text-end">Rp {{ number_format($visits->sum('biaya_obat'), 0, ',', '.') }}</td>
                                 <td class="text-end text-primary fs-6">Rp {{ number_format($visits->sum('total_biaya'), 0, ',', '.') }}</td>

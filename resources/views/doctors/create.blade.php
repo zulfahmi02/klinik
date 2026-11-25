@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="spesialisasi" class="form-label">Spesialisasi</label>
-                    <input id="spesialisasi" name="spesialisasi" value="{{ old('spesialisasi', 'Dokter Umum') }}" class="form-control @error('spesialisasi') is-invalid @enderror" required maxlength="255">
+                    <input id="spesialisasi" name="spesialisasi" value="{{ old('spesialisasi', 'Dokter Gigi') }}" class="form-control @error('spesialisasi') is-invalid @enderror" required maxlength="255">
                     @error('spesialisasi')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-4">
@@ -28,11 +28,7 @@
                     <input id="no_hp" name="no_hp" value="{{ old('no_hp') }}" class="form-control @error('no_hp') is-invalid @enderror" maxlength="255">
                     @error('no_hp')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
-                <div class="col-md-2">
-                    <label for="tarif_konsultasi" class="form-label">Tarif konsultasi (Rp)</label>
-                    <input id="tarif_konsultasi" type="number" name="tarif_konsultasi" value="{{ old('tarif_konsultasi', 50000) }}" class="form-control @error('tarif_konsultasi') is-invalid @enderror" min="0" required>
-                    @error('tarif_konsultasi')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                </div>
+
                 <div class="col-md-2">
                     <label for="status" class="form-label">Status</label>
                     <select id="status" name="status" class="form-select @error('status') is-invalid @enderror" required>

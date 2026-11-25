@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container":"#eceef0","on-tertiary-fixed":"#001d31","on-secondary":"#ffffff","inverse-primary":"#6bd8cb","on-secondary-fixed":"#00201c","error":"#ba1a1a","on-error-container":"#93000a","tertiary":"#006194","inverse-surface":"#2d3133","error-container":"#ffdad6","tertiary-fixed-dim":"#93ccff","surface":"#f7f9fb","surface-container-low":"#f2f4f6","tertiary-container":"#007bb9","on-primary-fixed":"#00201d","surface-container-high":"#e6e8ea","surface-dim":"#d8dadc","primary-fixed-dim":"#6bd8cb","primary":"#00685f","outline":"#6d7a77","primary-fixed":"#89f5e7","on-surface-variant":"#3d4947","surface-container-lowest":"#ffffff","on-primary-container":"#f4fffc","on-primary":"#ffffff","surface-container-highest":"#e0e3e5","secondary-fixed-dim":"#a2d0c6","on-tertiary-container":"#fdfcff","on-background":"#191c1e","secondary-fixed":"#bdece2","surface-bright":"#f7f9fb","on-secondary-fixed-variant":"#224e47","surface-tint":"#006a61","secondary-container":"#bdece2","on-error":"#ffffff","on-primary-fixed-variant":"#005049","on-secondary-container":"#416c65","inverse-on-surface":"#eff1f3","on-tertiary-fixed-variant":"#004b73","on-tertiary":"#ffffff","outline-variant":"#bcc9c6","secondary":"#3b665f","on-surface":"#191c1e","background":"#f7f9fb","primary-container":"#008378","tertiary-fixed":"#cce5ff","surface-variant":"#e0e3e5"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","space-lg":"1.5rem","margin":"2rem","space-xl":"2rem","gutter":"1.5rem","space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter-mobile":"0.75rem"},"fontFamily":{"body-md":["Inter"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"body-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"label-xs":["Plus Jakarta Sans"],"body-lg":["Inter"],"headline-lg-mobile":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},"fontSize":{"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.015em","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"display-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"display-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-xs":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg-mobile":["22px",{"lineHeight":"30px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm bg-surface-container-lowest"><img alt="Logo Klinik Gigi" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xrb8dGMzOFLb9pvCWDXMkW0flj6_o9RmQESE4QozFa2z1lgH8XiEjz_3qA5jO7qjnsEIYAVN622--AFAbk7OoyB_V51POXM29zS6zIBIMEH0tqZRmUYK2x4nyo9q6tdvjW0M7PBiw2mkwJ96atuXpRrnj2akXJZY_gz0J9NNY7nWECOfAfsx9uWupcKPvh5Zv1ncrdo3yKEJSZ6Kc5h0PD_kODLUhPGAKb9EdwQS_a"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-primary tracking-tight truncate leading-tight">Klinik Gigi</span><span class="font-label-xs text-label-xs text-on-surface-variant truncate">Sistem Informasi Pelayanan Gigi</span></div></div><div class="px-space-md py-space-sm"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-md text-label-md">Dashboard</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Pelayanan</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="data-pasien" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-label-md text-label-md">Data Pasien</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="kunjungan" href="#"><span class="material-symbols-outlined text-[20px]">event_note</span><span class="font-label-md text-label-md">Kunjungan</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Pengelolaan Dokter</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="data-dokter" href="#"><span class="material-symbols-outlined text-[20px]">stethoscope</span><span class="font-label-md text-label-md">Data Dokter</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="tambah-dokter" href="#"><span class="material-symbols-outlined text-[20px]">person_add</span><span class="font-label-md text-label-md">Tambah Dokter</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Pelaporan</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ringkasan-laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-label-md text-label-md">Ringkasan Laporan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-kunjungan" href="#"><span class="material-symbols-outlined text-[20px]">description</span><span class="font-label-md text-label-md">Laporan Kunjungan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-tindakan" href="#"><span class="material-symbols-outlined text-[20px]">vital_signs</span><span class="font-label-md text-label-md">Laporan Tindakan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-keuangan" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-label-md text-label-md">Laporan Keuangan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="laporan-dokter" href="#"><span class="material-symbols-outlined text-[20px]">award_star</span><span class="font-label-md text-label-md">Laporan Dokter</span></a><div class="pt-space-md pb-space-xs px-space-md"><span class="font-label-xs text-label-xs uppercase tracking-wider text-outline">Akun</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="profil" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-label-md text-label-md">Profil</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ganti-password" href="#"><span class="material-symbols-outlined text-[20px]">key</span><span class="font-label-md text-label-md">Ganti Password</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="keluar" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-label-md text-label-md">Keluar</span></a></nav></div></div><div class="p-space-md m-space-sm bg-surface-container-low rounded-xl flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><div class="relative flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlUxh0NzWa5rJBydaEw1OUrsYTphIf2GqD5MUex0QOlVGwNaFRJo5F1rBg_pWSgi49iAdkv2S0xNsMY5u3yLpUHi9Rjq5WW8TPAwaX5EYOV3i8O-UeOsXt6qw2KYTLHt5aCeRroNwwRIsCX25o1BBLuBhowUpcEa_e3Tjvp6-rEE8KU38nfOIHwgs85hQMvveI7kuu2WGYUKL4ESOQ5euNyRuxGjaDjGAo0sLkAQ0E"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-primary rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex flex-col min-w-0"><span class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">drg. Senja Puspa, Sp.KG</span><span class="font-label-xs text-label-xs text-on-surface-variant truncate">Staf Pelayanan &amp; Dokter</span></div></div><span class="inline-flex items-center px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-xs text-label-xs flex-shrink-0">Online</span></div></aside><div class="pl-72 flex flex-col min-h-screen"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[18px]">home</span><span>/</span><span class="text-primary font-label-sm text-label-sm">Poli Gigi</span></div><span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-xs text-label-xs"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Khusus Poli Gigi - Layanan Aktif</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low px-space-sm py-1 rounded-lg"><span class="material-symbols-outlined text-[18px] text-primary">calendar_today</span><span>03 November 2026</span></div><button class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface transition-all font-label-sm text-label-sm shadow-[0_1px_8px_rgba(0,0,0,0.04)]" type="button"><span class="material-symbols-outlined text-[18px] text-primary">print</span><span>Cetak Dokumen</span></button><button class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface transition-all font-label-sm text-label-sm shadow-[0_1px_8px_rgba(0,0,0,0.04)]" type="button"><span class="material-symbols-outlined text-[18px] text-tertiary">help_outline</span><span>Panduan</span></button><div class="flex items-center pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlUxh0NzWa5rJBydaEw1OUrsYTphIf2GqD5MUex0QOlVGwNaFRJo5F1rBg_pWSgi49iAdkv2S0xNsMY5u3yLpUHi9Rjq5WW8TPAwaX5EYOV3i8O-UeOsXt6qw2KYTLHt5aCeRroNwwRIsCX25o1BBLuBhowUpcEa_e3Tjvp6-rEE8KU38nfOIHwgs85hQMvveI7kuu2WGYUKL4ESOQ5euNyRuxGjaDjGAo0sLkAQ0E"/></div></div></header><main class="relative pt-16 bg-surface min-h-[calc(100vh-4rem)] w-full"><div class="flex flex-col w-full">
+<script>
+    (function highlightActiveMenu() {
+      const links = document.querySelectorAll('aside nav a[data-path]');
+      links.forEach(link => {
+        if (link.getAttribute('data-path') === 'data-pasien') {
+          link.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high', 'hover:text-on-surface');
+          link.classList.add('bg-primary-container', 'text-on-primary-container', 'font-headline-sm', 'shadow-sm');
+        } else {
+          link.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-headline-sm', 'shadow-sm');
+        }
+      });
+    })();
+  </script>
+<div class="px-space-xl py-space-lg flex flex-col gap-space-lg">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary-fixed text-primary font-headline-sm">
+<span class="material-symbols-outlined text-[20px]">folder_shared</span>
+</span>
+<span class="font-label-xs text-label-xs uppercase tracking-wider text-primary font-bold">Master Arsip Pasien</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Data Pasien Poli Gigi</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Manajemen arsip rekam medis digital, data identitas, status penjamin, dan riwayat kesehatan gigi pasien secara terintegrasi.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container-low text-on-surface transition-all font-label-md text-label-md shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">download</span>
+<span>Unduh Excel</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-all font-label-md text-label-md shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span>Cetak Daftar PDF</span>
+</button>
+</div>
+</div>
+<!-- Quick Stat Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Total Pasien -->
+<div class="relative overflow-hidden bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Pasien Terdaftar</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">1.248</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">jiwa</span>
+</div>
+<div class="mt-space-xs flex items-center gap-space-xs">
+<span class="inline-flex items-center text-primary font-label-xs text-label-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+            100% Aktif Terverifikasi
+          </span>
+</div>
+</div>
+<!-- BPJS Kesehatan -->
+<div class="relative overflow-hidden bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pasien BPJS Kesehatan</span>
+<span class="w-8 h-8 rounded-lg bg-secondary-fixed text-on-secondary-fixed-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">health_and_safety</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">782</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">jiwa</span>
+</div>
+<div class="mt-space-xs flex items-center gap-space-xs">
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 62.6%"></div>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant font-medium">62.6%</span>
+</div>
+</div>
+<!-- Asuransi Swasta -->
+<div class="relative overflow-hidden bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pasien Asuransi Swasta</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">194</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">jiwa</span>
+</div>
+<div class="mt-space-xs flex items-center gap-space-xs">
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-1.5 rounded-full" style="width: 15.5%"></div>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant font-medium">15.5%</span>
+</div>
+</div>
+<!-- Pasien Umum -->
+<div class="relative overflow-hidden bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pasien Umum (Mandiri)</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">272</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">jiwa</span>
+</div>
+<div class="mt-space-xs flex items-center gap-space-xs">
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 21.9%"></div>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant font-medium">21.9%</span>
+</div>
+</div>
+</div>
+<!-- Filter & Search Toolbar Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<!-- Search Field -->
+<div class="md:col-span-6 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full h-10 pl-10 pr-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-all" id="searchInput" placeholder="Cari nama lengkap, No. RM, NIK, atau no. HP..." type="text"/>
+</div>
+<!-- Filter Penjamin -->
+<div class="md:col-span-3">
+<div class="relative">
+<select class="w-full h-10 px-space-md pr-8 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md focus:outline-none appearance-none cursor-pointer" id="filterPenjamin">
+<option value="semua">Semua Penjamin</option>
+<option value="bpjs">BPJS Kesehatan</option>
+<option value="asuransi">Asuransi Swasta</option>
+<option value="umum">Umum / Pribadi</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-outline text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Filter Riwayat Alergi -->
+<div class="md:col-span-3">
+<div class="relative">
+<select class="w-full h-10 px-space-md pr-8 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md focus:outline-none appearance-none cursor-pointer" id="filterAlergi">
+<option value="semua">Semua Status Alergi</option>
+<option value="ada">Memiliki Alergi Obat/Bahan</option>
+<option value="tidak">Tanpa Riwayat Alergi</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-outline text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Quick Indicator Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-space-sm">
+<span class="text-outline font-label-xs text-label-xs uppercase">Filter Aktif:</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-surface font-label-xs text-label-xs">
+            Penjamin: Semua
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-surface font-label-xs text-label-xs">
+            Alergi: Semua
+          </span>
+</div>
+<div class="flex items-center gap-space-xs text-outline font-label-xs text-label-xs">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Pendaftaran pasien baru dilakukan terpusat melalui meja admisi / portal publik pasien.</span>
+</div>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm tracking-wider uppercase">
+<th class="py-space-md px-space-md" scope="col">No. RM</th>
+<th class="py-space-md px-space-md" scope="col">Nama Pasien &amp; NIK</th>
+<th class="py-space-md px-space-md" scope="col">Gender / Usia</th>
+<th class="py-space-md px-space-md" scope="col">Kontak (HP/WA)</th>
+<th class="py-space-md px-space-md" scope="col">Penjamin &amp; Nomor Penjamin</th>
+<th class="py-space-md px-space-md" scope="col">Riwayat Alergi</th>
+<th class="py-space-md px-space-md" scope="col">Kunjungan Terakhir</th>
+<th class="py-space-md px-space-md text-right" scope="col">Aksi Tindakan</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-md text-body-md">
+<!-- Row 1: Siti Rahmawati -->
+<tr class="hover:bg-surface transition-colors">
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold tracking-wide">
+                  RM-001089
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Siti Rahmawati</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">NIK: 3201145802950001</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-xs text-label-xs font-bold">P</span>
+<span class="font-body-md text-body-md text-on-surface">29 Tahun</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<a class="inline-flex items-center gap-1 text-primary hover:underline font-body-sm text-body-sm" href="https://wa.me/6281234567890" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>0812-3456-7890</span>
+</a>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-semibold">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+                    BPJS Kesehatan
+                  </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">No. penjamin: 0001892837192</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-xs text-label-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                  Penisilin / Amoxicillin
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">02 Nov 2026</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Tambal Gigi Komposit</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center gap-space-xs justify-end">
+<a class="inline-flex items-center gap-1 px-space-sm py-1.5 rounded-lg bg-surface-container text-primary hover:bg-primary hover:text-on-primary font-label-sm text-label-sm transition-all" href="#" title="Lihat Rekam Medis &amp; Odontogram">
+<span class="material-symbols-outlined text-[16px]">clinical_notes</span>
+<span>Detail RM</span>
+</a>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Edit Data Demografi" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Opsi Lainnya" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Budi Santoso -->
+<tr class="bg-surface-container-lowest hover:bg-surface transition-colors">
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold tracking-wide">
+                  RM-001024
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Budi Santoso</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">NIK: 3201141208820004</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-xs text-label-xs font-bold">L</span>
+<span class="font-body-md text-body-md text-on-surface">42 Tahun</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<a class="inline-flex items-center gap-1 text-primary hover:underline font-body-sm text-body-sm" href="https://wa.me/6281398765432" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>0813-9876-5432</span>
+</a>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-semibold">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+                    BPJS Kesehatan
+                  </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">No. penjamin: 0001892837190</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-xs text-label-xs">
+<span class="material-symbols-outlined text-[14px] text-outline">check</span>
+                  Tidak Ada Alergi
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">28 Okt 2026</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Scaling Calculus Rahang Atas</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center gap-space-xs justify-end">
+<a class="inline-flex items-center gap-1 px-space-sm py-1.5 rounded-lg bg-surface-container text-primary hover:bg-primary hover:text-on-primary font-label-sm text-label-sm transition-all" href="#" title="Lihat Rekam Medis &amp; Odontogram">
+<span class="material-symbols-outlined text-[16px]">clinical_notes</span>
+<span>Detail RM</span>
+</a>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Edit Data Demografi" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Opsi Lainnya" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Ahmad Farhan -->
+<tr class="bg-surface-container-lowest hover:bg-surface transition-colors">
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold tracking-wide">
+                  RM-000945
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Ahmad Farhan</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">NIK: 3171051506890003</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-xs text-label-xs font-bold">L</span>
+<span class="font-body-md text-body-md text-on-surface">35 Tahun</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<a class="inline-flex items-center gap-1 text-primary hover:underline font-body-sm text-body-sm" href="https://wa.me/6282145678901" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>0821-4567-8901</span>
+</a>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary font-semibold">
+<span class="material-symbols-outlined text-[14px]">person</span>
+                    Umum / Pribadi
+                  </span>
+<span class="font-body-sm text-body-sm text-outline italic">Tanpa Asuransi</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-xs text-label-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                  Aspirin
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">21 Okt 2026</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Ekstraksi Gigi M3 Impaksi</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center gap-space-xs justify-end">
+<a class="inline-flex items-center gap-1 px-space-sm py-1.5 rounded-lg bg-surface-container text-primary hover:bg-primary hover:text-on-primary font-label-sm text-label-sm transition-all" href="#" title="Lihat Rekam Medis &amp; Odontogram">
+<span class="material-symbols-outlined text-[16px]">clinical_notes</span>
+<span>Detail RM</span>
+</a>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Edit Data Demografi" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Opsi Lainnya" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Dewi Lestari -->
+<tr class="bg-surface-container-lowest hover:bg-surface transition-colors">
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold tracking-wide">
+                  RM-001210
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Dewi Lestari</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">NIK: 3204126405020002</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-xs text-label-xs font-bold">P</span>
+<span class="font-body-md text-body-md text-on-surface">24 Tahun</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<a class="inline-flex items-center gap-1 text-primary hover:underline font-body-sm text-body-sm" href="https://wa.me/6287811223344" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>0878-1122-3344</span>
+</a>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-tertiary font-semibold">
+<span class="material-symbols-outlined text-[14px]">corporate_fare</span>
+                    Asuransi Astra Aviva
+                  </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">No. penjamin: POL-882910-CL</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-xs text-label-xs">
+<span class="material-symbols-outlined text-[14px] text-outline">check</span>
+                  Tidak Ada Alergi
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">15 Okt 2026</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Pemasangan Brackets Kontrol 1</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center gap-space-xs justify-end">
+<a class="inline-flex items-center gap-1 px-space-sm py-1.5 rounded-lg bg-surface-container text-primary hover:bg-primary hover:text-on-primary font-label-sm text-label-sm transition-all" href="#" title="Lihat Rekam Medis &amp; Odontogram">
+<span class="material-symbols-outlined text-[16px]">clinical_notes</span>
+<span>Detail RM</span>
+</a>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Edit Data Demografi" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Opsi Lainnya" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Hendrawan Kusuma -->
+<tr class="bg-surface-container-lowest hover:bg-surface transition-colors">
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold tracking-wide">
+                  RM-000877
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Hendrawan Kusuma</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">NIK: 3201121111760007</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-xs text-label-xs font-bold">L</span>
+<span class="font-body-md text-body-md text-on-surface">50 Tahun</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<a class="inline-flex items-center gap-1 text-primary hover:underline font-body-sm text-body-sm" href="https://wa.me/6285677889900" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>0856-7788-9900</span>
+</a>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary font-semibold">
+<span class="material-symbols-outlined text-[14px]">person</span>
+                    Umum / Pribadi
+                  </span>
+<span class="font-body-sm text-body-sm text-outline italic">Tanpa Asuransi</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-xs text-label-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                  Lidocaine ringan
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">09 Okt 2026</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Perawatan Saluran Akar (PSA)</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center gap-space-xs justify-end">
+<a class="inline-flex items-center gap-1 px-space-sm py-1.5 rounded-lg bg-surface-container text-primary hover:bg-primary hover:text-on-primary font-label-sm text-label-sm transition-all" href="#" title="Lihat Rekam Medis &amp; Odontogram">
+<span class="material-symbols-outlined text-[16px]">clinical_notes</span>
+<span>Detail RM</span>
+</a>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Edit Data Demografi" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Opsi Lainnya" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Ratna Wulandari -->
+<tr class="bg-surface-container-lowest hover:bg-surface transition-colors">
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold tracking-wide">
+                  RM-001150
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Ratna Wulandari</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">NIK: 3201155909950005</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-xs text-label-xs font-bold">P</span>
+<span class="font-body-md text-body-md text-on-surface">31 Tahun</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<a class="inline-flex items-center gap-1 text-primary hover:underline font-body-sm text-body-sm" href="https://wa.me/6281922334455" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>0819-2233-4455</span>
+</a>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-semibold">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+                    BPJS Kesehatan
+                  </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">No. penjamin: 0001892837195</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-xs text-label-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                  Lateks / Karet
+                </span>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">25 Sep 2026</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Pembersihan Karang &amp; Polish</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle text-right">
+<div class="inline-flex items-center gap-space-xs justify-end">
+<a class="inline-flex items-center gap-1 px-space-sm py-1.5 rounded-lg bg-surface-container text-primary hover:bg-primary hover:text-on-primary font-label-sm text-label-sm transition-all" href="#" title="Lihat Rekam Medis &amp; Odontogram">
+<span class="material-symbols-outlined text-[16px]">clinical_notes</span>
+<span>Detail RM</span>
+</a>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Edit Data Demografi" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Opsi Lainnya" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-space-md py-space-sm bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+          Menampilkan <span class="font-semibold text-on-surface">1 - 6</span> dari <span class="font-semibold text-on-surface">1.248</span> data pasien terdaftar
+        </div>
+<div class="flex items-center gap-space-xs">
+<!-- Tombol Sebelumnya -->
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface-container-lowest text-outline hover:text-on-surface disabled:opacity-50 transition-colors font-label-sm text-label-sm shadow-sm" disabled="" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+<span>Sebelumnya</span>
+</button>
+<!-- Nomor Halaman -->
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold flex items-center justify-center" type="button">
+              1
+            </button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-sm text-label-sm font-medium flex items-center justify-center shadow-sm" type="button">
+              2
+            </button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-sm text-label-sm font-medium flex items-center justify-center shadow-sm" type="button">
+              3
+            </button>
+<span class="w-6 text-center text-outline font-body-sm text-body-sm">...</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-sm text-label-sm font-medium flex items-center justify-center shadow-sm" type="button">
+              208
+            </button>
+</div>
+<!-- Tombol Selanjutnya -->
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-colors font-label-sm text-label-sm shadow-sm" type="button">
+<span>Selanjutnya</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Clinical Notice Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[24px] text-primary flex-shrink-0 mt-0.5">verified</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Integrasi Odontogram &amp; Riwayat Medis Gigi</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Pemeriksaan klinis, pembaruan status gigi pada bagan odontogram FDI, dan penulisan resume medik dilakukan melalui menu 'Detail RM' setiap pasien saat kunjungan poli berlangsung.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<span class="inline-flex items-center px-space-sm py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-xs text-label-xs font-semibold">
+          Satu Rekam Medis (SATUSEHAT Ready)
+        </span>
+</div>
+</div>
+</div>
+<!-- Inline Interaction Behavior -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInput');
+      const tableRows = document.querySelectorAll('tbody tr');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          tableRows.forEach(row => {
+            const textContent = row.textContent.toLowerCase();
+            if (textContent.includes(query)) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        });
+      }
+    });
+  </script>
+</div></main></div></body></html>
